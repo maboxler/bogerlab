@@ -1,6 +1,11 @@
-package VIEW;
+package Model;
 
 public class King extends Chesspiece {
+
+	public King(int x, int y, char color) {
+		super(x, y, color);
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	boolean validMove(int x, int y) {

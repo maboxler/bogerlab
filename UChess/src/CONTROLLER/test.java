@@ -2,9 +2,6 @@ package CONTROLLER;
 
 public class test {
 
-	public static void main(String[] args) {
-		System.out.println("Git hat noch nicht überzeugt !!!!");
-
-	}
+	
 
 }

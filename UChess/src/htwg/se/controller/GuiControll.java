@@ -1,10 +1,9 @@
 package htwg.se.controller;
-import htwg.se.model.*;
+
 
 
 
 public class GuiControll {
-	private Chesspiece gamefield[][];
 	
 	public GuiControll() {
 		

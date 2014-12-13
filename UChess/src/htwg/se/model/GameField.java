@@ -1,8 +1,6 @@
 package htwg.se.model;
 
 public class GameField {
-	private int height = 8;
-	private int length = 8;
 	
 	public GameField() {
 			initPawns();

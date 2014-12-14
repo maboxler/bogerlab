@@ -27,5 +27,15 @@ public abstract class Chesspiece {
 		other pieces in the way Returns true, if the move
 	 	is valid
 	 */
-	abstract boolean validMove(int x,int y);
+	public abstract boolean validMove(int x,int y);
+	
+	/* returns a Char: 
+	 * Pawn = P 
+	 * Tower = T
+	 * Knight = H(Horse)
+	 * Bishop = B
+	 * Queen = Q
+	 * King = K
+	 */
+	public abstract char toChar();
 }

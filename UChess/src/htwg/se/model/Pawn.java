@@ -10,9 +10,15 @@ public class Pawn extends Chesspiece {
 	}
 	
 	@Override
-	boolean validMove(int x, int y) {
+	public boolean validMove(int x, int y) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+
+	public char toChar() {
+		return 'P';
+	}
+	
 
 }

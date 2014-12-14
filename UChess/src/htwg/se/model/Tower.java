@@ -8,9 +8,14 @@ public class Tower extends Chesspiece {
 	}
 
 	@Override
-	boolean validMove(int x, int y) {
+	public boolean validMove(int x, int y) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public char toChar() {
+		return 'T';
 	}
 
 }

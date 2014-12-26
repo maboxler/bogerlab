@@ -32,6 +32,7 @@ public class GuiControll {
 	
 	
 	public boolean checkMove(int x1,int y1,int x2,int y2) {
+		System.out.println("wuff");
 		return false;
 	}
 }

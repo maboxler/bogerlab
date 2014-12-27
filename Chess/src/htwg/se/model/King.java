@@ -8,9 +8,9 @@ public class King extends Chesspiece {
 	}
 
 	@Override
-	public boolean validMove(int x, int y) {
+	public Point[] validMove(int x, int y) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
 	@Override

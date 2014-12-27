@@ -1,20 +1,23 @@
 package htwg.se.model;
 
 public abstract class Chesspiece {
-	int x;// X-Cordinates of the piece
-	int y;// Y-Cordinates of the Piece
-	char color; //Black or White
+	private int x;// X-Cordinates of the piece
+	private int y;// Y-Cordinates of the Piece
+	private char color; //Black or White
 	
-	public int getX() {// getter for x
-		return this.x;
-	}
-	public int getY() {// getter for y
-		return this.y;
+	public Point getPosition() {// getter for x
+		return new Point(x,y);
 	}
 	
-	public void setX(int x){//setter for x
-		this.x = x;
+	public char getcolor() {
+		return this.color;
 	}
+	
+	public void setPosition(Point p){//setter for x
+		this.x = p.getX();
+		this.y = p.getY();
+	}
+
 	
 	public Chesspiece(int x, int y, char color) {
 		this.x = x;
@@ -27,7 +30,7 @@ public abstract class Chesspiece {
 		other pieces in the way Returns true, if the move
 	 	is valid
 	 */
-	public abstract boolean validMove(int x,int y);
+	public abstract Point[] validMove(int x,int y);
 	
 	/* returns a Char: 
 	 * Pawn = P 

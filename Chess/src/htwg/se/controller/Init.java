@@ -1,12 +1,17 @@
 package htwg.se.controller;
 
-import htwg.se.model.Field;
 import htwg.se.model.GameField;
 
+
+
 public class Init {
+	
+	
 
 	public static void main(String[] args) {
+		@SuppressWarnings("unused")
 		GameField gameField = new GameField();
+		/*
 		Field[][] field = gameField.getField();
 		String testAusgabe = "";
 		for(int y = 7; y >= 0; --y) {
@@ -23,6 +28,7 @@ public class Init {
 			testAusgabe = "";
 
 		}
+		*/
 	}
 
 }

@@ -16,6 +16,12 @@ public class Point {
 	public int getY() {
 		return y;
 	}
+	
+	public boolean equals(Point p) {
+		if(p.getX() == this.x && p.getY() == this.y)
+			return true;
+		return false;
+	}
 
 	
 }

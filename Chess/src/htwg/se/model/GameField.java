@@ -118,4 +118,48 @@ public class GameField {
 		return this.field;
 	}
 	
+	public boolean moveCheck (Point from, Point to) {
+		Chesspiece figure = field[from.getX()][from.getY()].getChessPiece();
+		if(figure == null) 
+			return false;
+		return checkValid(figure,to);
+		
+	}
+	
+	public boolean checkValid(Piece figure, Point to) {
+		Point[] path = figure.validMove(to.getX(), to.getY());
+		if(path == null)
+			return false;
+		return checkPath(figure, path);
+		
+	}
+	
+	public boolean checkPath(Piece figure, Point[] path) {
+		for(int i = path.length - 1; i > 0; --i) {
+			if(field[path[i].getX()][path[i].getY()] != null) {
+				return false;
+			}
+		}
+		return checkGoal(path[0], figure);
+		
+	}
+	
+	public boolean checkGoal(Point goal, Piece figure) {
+	Field goalfield = field[goal.getX()][goal.getY()];
+		if(goalfield.getChessPiece() ==  null)
+			return true;
+		return beatable(goalfield.getChessPiece(),figure);
+	}
+	
+	public boolean beatable(Piece target, Piece figure) {
+		return target.getcolor() != figure.getcolor();
+	}
+	
+	public void  moveAfterCheck(Point from, Point to) {
+		Field targetField = field[to.getX()][to.getY()];
+		Field fromField = field[from.getX()][from.getY()];
+		targetField.getChessPiece().setPosition(new Point(-1,-1));
+		targetField.setChessPiece(fromField.getChessPiece());
+		fromField.setChessPiece(null);
+	}
 }

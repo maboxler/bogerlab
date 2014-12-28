@@ -14,11 +14,10 @@ public class BishopTest {
 		bishop = new Bishop(1, 1, 'w');
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void test() {
 		assertEquals(bishop.toChar(), 'B');
-		assertEquals(bishop.validMove(1, 1), null);
+		assertNull(bishop.validMove(1, 1));
 	}
 
 }

@@ -14,12 +14,11 @@ public class PawnTest {
 		testpawn = new Pawn(1,1,'w');
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void test() {
 		assertEquals(testpawn.moved, false);
 		assertEquals(testpawn.toChar(), 'P');
-		assertEquals(testpawn.validMove(1, 1), null);
+		assertNull(testpawn.validMove(1, 1));
 	}
 
 }

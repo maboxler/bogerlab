@@ -13,11 +13,10 @@ public class TowerTest {
 		testtower = new Tower(1,1,'w');
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void test() {
 		assertEquals(testtower.toChar(), 'T');
-		assertEquals(testtower.validMove(1, 1), null);
+		assertNull(testtower.validMove(1, 1));
 	}
 
 }

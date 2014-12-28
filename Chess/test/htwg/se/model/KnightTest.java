@@ -14,11 +14,10 @@ public class KnightTest {
 		knight = new Knight(1,1,'w');
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void test() {
 		assertEquals(knight.toChar(), 'H');
-		assertEquals(knight.validMove(1, 1), null);
+		assertNull(knight.validMove(1, 1));
 	}
 
 }

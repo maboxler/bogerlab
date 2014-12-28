@@ -15,7 +15,7 @@ public class GamefieldTest {
 	}
 
 	@Test
-	public void test() {
+	public void inittest() {
 		Field field[][] = gamefield.getField();
 		assertEquals(field[0][0].getChessPiece().toChar(), 'T');
 		assertEquals(field[0][0].getChessPiece().getcolor(), 'w');
@@ -82,9 +82,13 @@ public class GamefieldTest {
 		assertEquals(field[1][6].getChessPiece().toChar(), 'P');
 		assertEquals(field[1][6].getChessPiece().getcolor(), 'b');
 		assertEquals(field[0][6].getChessPiece().toChar(), 'P');
-		assertEquals(field[0][6].getChessPiece().getcolor(), 'b');
-		
-		
+		assertEquals(field[0][6].getChessPiece().getcolor(), 'b');		
+	}
+	
+	@Test
+	public void killtest() {
+		assertFalse(gamefield.beatable(new Queen(1,1,'w'), new Pawn(1,1,'w')));
+		assertTrue(gamefield.beatable(new Queen(1,1,'w'), new Pawn(1,1,'b')));
 	}
 
 }

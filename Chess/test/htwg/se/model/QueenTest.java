@@ -14,11 +14,10 @@ public class QueenTest {
 		queen = new Queen(1,1,'w');
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void test() {
 		assertEquals(queen.toChar(), 'Q');
-		assertEquals(queen.validMove(1, 1), null);
+		assertNull(queen.validMove(1, 1));
 	}
 
 }

@@ -14,11 +14,10 @@ public class KingTest {
 		king = new King(1,1,'w');
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void test() {
 		assertEquals(king.toChar(), 'K');
-		assertEquals(king.validMove(1, 1), null);
+		assertNull(king.validMove(1, 1));
 	}
 
 }

@@ -1,11 +1,12 @@
 package htwg.se.model;
 
-public abstract class Chesspiece {
+public abstract  class Chesspiece implements Piece{
 	private int x;// X-Cordinates of the piece
 	private int y;// Y-Cordinates of the Piece
 	private char color; //Black or White
+	protected boolean moved;
 	
-	public Point getPosition() {// getter for x
+	public Point getPosition() {
 		return new Point(x,y);
 	}
 	
@@ -23,13 +24,10 @@ public abstract class Chesspiece {
 		this.x = x;
 		this.y = y;
 		this.color = color;
+		moved = false;
 	}
 	
-	/* 	checks if the Move form the Current position to
-	 	the new X and Y is valid or not. It won't check if there are 
-		other pieces in the way Returns true, if the move
-	 	is valid
-	 */
+	
 	public abstract Point[] validMove(int x,int y);
 	
 	/* returns a Char: 

@@ -5,6 +5,7 @@ public abstract  class Chesspiece implements Piece{
 	private int y;// Y-Cordinates of the Piece
 	private char color; //Black or White
 	protected boolean moved;
+	protected boolean alive;
 	
 	public Point getPosition() {
 		return new Point(x,y);
@@ -19,12 +20,17 @@ public abstract  class Chesspiece implements Piece{
 		this.y = p.getY();
 	}
 
+	public void kill() {
+		this.alive = false;
+		this.setPosition(new Point(-1,-1));
+	}
 	
 	public Chesspiece(int x, int y, char color) {
 		this.x = x;
 		this.y = y;
 		this.color = color;
 		moved = false;
+		alive = true;
 	}
 	
 	

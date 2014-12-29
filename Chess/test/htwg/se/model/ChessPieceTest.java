@@ -26,6 +26,9 @@ public class ChessPieceTest {
 		point = piece.getPosition();
 		assertEquals(point.getX(), 6);
 		assertEquals(point.getY(), 7);
+		assertTrue(piece.alive);
+		piece.kill();
+		assertFalse(piece.alive);
 	}
 
 }

@@ -89,6 +89,26 @@ public class GamefieldTest {
 	public void killtest() {
 		assertFalse(gamefield.beatable(new Queen(1,1,'w'), new Pawn(1,1,'w')));
 		assertTrue(gamefield.beatable(new Queen(1,1,'w'), new Pawn(1,1,'b')));
+		Field field[][] = gamefield.getField();
+		assertEquals(field[0][0].getChessPiece().toChar(),'T');
+		assertEquals(field[0][1].getChessPiece().toChar(),'P');
+		gamefield.moveAfterCheck(new Point(0,0), new Point(0,1));
+		assertNull(field[0][0].getChessPiece());
+		assertEquals(field[0][1].getChessPiece().toChar(),'T');
+		gamefield.moveAfterCheck(new Point(0,1), new Point(0,0));
+		assertNull(field[0][1].getChessPiece());
+		assertEquals(field[0][0].getChessPiece().toChar(),'T');
+	}
+	
+	@Test
+	public void wintest() {
+		assertFalse(gamefield.whiteWon());
+		gamefield.getField()[4][7].getChessPiece().kill();
+		assertTrue(gamefield.whiteWon());
+		gamefield = new GameField();
+		assertFalse(gamefield.blackWon());
+		gamefield.getField()[4][0].getChessPiece().kill();
+		assertTrue(gamefield.blackWon());
 	}
 
 }

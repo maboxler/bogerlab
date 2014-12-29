@@ -155,10 +155,23 @@ public class GameField {
 		return target.getcolor() != figure.getcolor();
 	}
 	
+	public boolean whiteWon() {
+		if(blackKing.alive)
+			return false;
+		return true;
+	}
+	
+	public boolean blackWon() {
+		if(whiteKing.alive)
+			return false;
+		return true;
+	}
+	
 	public void  moveAfterCheck(Point from, Point to) {
 		Field targetField = field[to.getX()][to.getY()];
 		Field fromField = field[from.getX()][from.getY()];
-		targetField.getChessPiece().setPosition(new Point(-1,-1));
+		if(targetField.getChessPiece() != null)
+			targetField.getChessPiece().kill();
 		targetField.setChessPiece(fromField.getChessPiece());
 		fromField.setChessPiece(null);
 	}

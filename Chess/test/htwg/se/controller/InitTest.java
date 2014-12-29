@@ -8,15 +8,15 @@ import org.junit.Test;
 
 public class InitTest {
 
+	Init init;
 	@Before
 	public void setUp() throws Exception {
-		@SuppressWarnings("unused")
-		Init init = new Init();
+		init = new Init();
 	}
 
 	@Test
 	public void test() {
-		Init.main(null);
+		
 	}
 
 }

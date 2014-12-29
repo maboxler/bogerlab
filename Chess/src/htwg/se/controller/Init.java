@@ -11,8 +11,9 @@ public class Init {
 
 	public static void main(String[] args) {
 		GameField gameField = new GameField();
-		TUI tui = new TUI();
-		ChessController cc = new ChessController(tui, gameField);
+		
+		ChessController cc = new ChessController(gameField);
+		TUI tui = new TUI(cc);
 		cc.ControllFlow();
 	}
 

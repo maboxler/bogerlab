@@ -1,12 +1,9 @@
 package htwg.se.view;
 
-import htwg.se.model.*;
+
 
 public interface UI {
-	/*
-	 * Displays the current state of the Field
-	 */
-	public void update(Field[][] field);
+
 	/*
 	 * Resets the Game
 	 */

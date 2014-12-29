@@ -1,17 +1,20 @@
 package htwg.se.controller;
 
-import htwg.se.model.GameField;
-import htwg.se.view.*;
+import htwg.se.util.*;
+import htwg.se.model.*;
 
-import java.util.List;
 
-public class ChessController {
-	private List<UI> uis;
+
+
+public class ChessController extends Observable{
 	private GameField gamefield;
 	
-	public ChessController(TUI tui, GameField gamefield) {
-		uis.add(tui);
+	public ChessController( GameField gamefield) {
 		this.gamefield = gamefield;
+	}
+	
+	public Field[][] getField() {
+		return gamefield.getField();
 	}
 	
 	public void ControllFlow() {

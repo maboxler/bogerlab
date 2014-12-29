@@ -1,11 +1,21 @@
 package htwg.se.view;
 
 import htwg.se.model.Field;
+import htwg.se.util.Event;
+import htwg.se.util.IObserver;
+import htwg.se.controller.*;
 
-public class TUI implements UI {
+public class TUI implements UI, IObserver {
+	
+	ChessController controller;
+	
+	public TUI(ChessController controller) {
+		this.controller = controller;
+	}
 
-	@Override
-	public void update(Field[][] field) {
+	
+	private void printUI() {
+		Field field[][] = controller.getField();
 		String testAusgabe = "";
 		for(int y = 7; y >= 0; --y) {
 			testAusgabe += "|";
@@ -37,6 +47,12 @@ public class TUI implements UI {
 	@Override
 	public void message(String text) {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(Event e) {
+		printUI();
 		
 	}
 

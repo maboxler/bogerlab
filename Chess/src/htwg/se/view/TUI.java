@@ -46,8 +46,8 @@ public class TUI implements UI, IObserver {
 
 	public boolean processInputLine(String line) {
 		if(line.matches("[0-7][0-7] [0-7][0-7]")) {
-			//pressed(
-			//pressed(Integer.parseInt(line.substring(3, 3)),Integer.parseInt(line.substring(4, 4)));
+			pressed((int)line.charAt(0) - 48,(int)line.charAt(1) - 48);
+			pressed((int)line.charAt(3) - 48,(int)line.charAt(4) - 48);
 			return true;
 		}
 		return false;

@@ -16,7 +16,7 @@ public class TowerTest {
 	@Test
 	public void test() {
 		assertEquals(testtower.toChar(), 'T');
-		//assertNull(testtower.validMove(1, 1));
+		assertNull(testtower.validMove(1, 1));
 	}
 
 }

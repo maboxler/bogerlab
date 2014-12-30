@@ -24,6 +24,8 @@ public class TUITest {
 		tui.restart();
 		tui.message("start");
 		assertTrue(tui.processInputLine("00 01"));
+		assertFalse(tui.processInputLine(" "));
+		assertFalse(tui.processInputLine("kshdfkjbfhjbfjd"));
 	}
 
 }

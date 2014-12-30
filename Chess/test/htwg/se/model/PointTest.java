@@ -26,6 +26,8 @@ public class PointTest {
 		assertEquals(testpoint.equals(refpoint), false);
 		refpoint = new Point(3,4);
 		assertEquals(testpoint.equals(refpoint), false);
+		refpoint = new Point(0,0);
+		assertEquals(testpoint.equals(refpoint), false);
 	}
 
 }

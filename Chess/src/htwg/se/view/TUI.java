@@ -27,9 +27,11 @@ public class TUI implements UI, IObserver {
 				}
 				testAusgabe += "|";
 			}
+			
 			System.out.println(testAusgabe);
 			testAusgabe = "";
 		}
+		
 	}
 
 	@Override

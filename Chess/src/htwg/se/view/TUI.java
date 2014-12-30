@@ -1,6 +1,7 @@
 package htwg.se.view;
 
 import htwg.se.model.Field;
+import htwg.se.model.Point;
 import htwg.se.util.Event;
 import htwg.se.util.IObserver;
 import htwg.se.controller.*;
@@ -8,9 +9,13 @@ import htwg.se.controller.*;
 public class TUI implements UI, IObserver {
 	
 	ChessController controller;
+	boolean firstpressed;
+	Point first;
 	
 	public TUI(ChessController controller) {
 		this.controller = controller;
+		firstpressed = false;
+		first = null;
 	}
 
 	
@@ -36,19 +41,34 @@ public class TUI implements UI, IObserver {
 
 	@Override
 	public void restart() {
-		// TODO Auto-generated method stub
-
+		controller.reset();
 	}
 
+	public boolean processInputLine(String line) {
+		if(line.matches("[0-7][0-7] [0-7][0-7]")) {
+			pressed(Integer.parseInt(line.substring(0, 0)),Integer.parseInt(line.substring(1, 1)));
+			pressed(Integer.parseInt(line.substring(3, 3)),Integer.parseInt(line.substring(4, 4)));
+			return true;
+		}
+		return false;
+	}
+	
+	
 	@Override
 	public void pressed(int x, int y) {
-		// TODO Auto-generated method stub
+		if(firstpressed) {
+			controller.move(first, new Point(x,y));
+			firstpressed = false;
+			return;
+		}
+		first = new Point(x,y);
+		firstpressed = true;
 
 	}
 
 	@Override
 	public void message(String text) {
-		// TODO Auto-generated method stub
+		System.out.println(text);
 		
 	}
 

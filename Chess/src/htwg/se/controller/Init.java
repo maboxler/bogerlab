@@ -13,8 +13,8 @@ public class Init {
 		GameField gameField = new GameField();
 		
 		ChessController cc = new ChessController(gameField);
+		@SuppressWarnings("unused")
 		TUI tui = new TUI(cc);
-		cc.ControllFlow();
 	}
 
 }

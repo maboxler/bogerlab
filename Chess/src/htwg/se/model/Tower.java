@@ -17,15 +17,17 @@ public class Tower extends Chesspiece {
 	@Override
 	public Point[] validMove(int x, int y) {
 
-		if (p.getX() != x && p.getY() != y) { // if not equal position + target
-			
-			if (x != p.getX() && y == p.getY()) {
-				horizontal(x, y);
-			} else if (x == p.getX() && y != p.getY()) {
-				vertical(x, y);
-			} else {
-				diagonal(x, y);
-			}
+		if (p.getX() == x && p.getY() == y) { // if not equal position + target
+			return null;
+		}
+
+		
+		if (x != p.getX() && y == p.getY()) {
+			horizontal(x, y);
+		} else if (x == p.getX() && y != p.getY()) {
+			vertical(x, y);
+		} else {
+			diagonal(x, y);
 		}
 
 		return listToArray();

@@ -1,6 +1,7 @@
 package htwg.se.view;
 
 
+import static org.junit.Assert.*;
 import htwg.se.controller.ChessController;
 import htwg.se.model.GameField;
 
@@ -20,6 +21,9 @@ public class TUITest {
 	@Test
 	public void test() {
 		tui.update(null);
+		tui.restart();
+		tui.message("start");
+		assertTrue(tui.processInputLine("00 01"));
 	}
 
 }

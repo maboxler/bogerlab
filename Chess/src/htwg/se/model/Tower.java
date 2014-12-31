@@ -20,16 +20,20 @@ public class Tower extends Chesspiece {
 		if (equalPosition(x, y)) {
 			return null;
 		}
+		
+		whichDirection(x, y);
 
+		return listToArray();
+
+	}
+
+	private void whichDirection(int x, int y) {
 		if (x != p.getX() && y == p.getY()) {
 			horizontal(x, y);
 		} else if (x == p.getX() && y != p.getY()) {
 			vertical(x, y);
 		} else 
 			diagonal(x, y);
-
-		return listToArray();
-
 	}
 
 	private boolean equalPosition(int x, int y) {

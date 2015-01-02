@@ -1,7 +1,8 @@
 package htwg.se.view;
 
 import htwg.se.model.Field;
-import htwg.se.model.Point;
+import htwg.se.util.Point;
+
 import htwg.se.util.Event;
 import htwg.se.util.IObserver;
 import htwg.se.controller.*;

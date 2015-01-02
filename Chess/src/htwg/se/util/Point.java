@@ -1,4 +1,4 @@
-package htwg.se.model;
+package htwg.se.util;
 
 public class Point {
 	private int x;

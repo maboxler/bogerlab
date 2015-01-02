@@ -1,5 +1,7 @@
 package htwg.se.model;
 
+import htwg.se.util.Point;
+
 public interface Piece {
 	/*
 	 * returns the Position of the Piece.

@@ -1,5 +1,7 @@
 package htwg.se.model;
 
+import htwg.se.util.Point;
+
 public class GameField {
 	
 	private Pawn blackPawns[];

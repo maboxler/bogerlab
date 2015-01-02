@@ -1,5 +1,7 @@
 package htwg.se.model;
 
+import htwg.se.util.*;
+
 public abstract  class Chesspiece implements Piece{
 	private int x;// X-Cordinates of the piece
 	private int y;// Y-Cordinates of the Piece

@@ -1,8 +1,8 @@
 package htwg.se.controller;
 
 import static org.junit.Assert.*;
+import htwg.se.util.Point;
 import htwg.se.model.GameField;
-import htwg.se.model.Point;
 
 import org.junit.Before;
 import org.junit.Test;

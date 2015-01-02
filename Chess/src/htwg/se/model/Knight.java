@@ -1,5 +1,7 @@
 package htwg.se.model;
 
+import htwg.se.util.Point;
+
 public class Knight extends Chesspiece {
 
 	public Knight(int x, int y, char color) {

@@ -1,5 +1,7 @@
 package htwg.se.model;
 
+import htwg.se.util.Point;
+
 public class Field {
 	private Point position;
 	private Chesspiece c;

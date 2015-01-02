@@ -1,6 +1,7 @@
 package htwg.se.model;
 
 import java.util.ArrayList;
+import htwg.se.util.Point;
 import java.util.List;
 
 public class Tower extends Chesspiece {

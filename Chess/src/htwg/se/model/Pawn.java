@@ -1,5 +1,7 @@
 package htwg.se.model;
 
+import htwg.se.util.Point;
+
 public class Pawn extends Chesspiece {
 
 	boolean moved;

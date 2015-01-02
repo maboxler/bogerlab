@@ -1,4 +1,4 @@
-package htwg.se.model;
+package htwg.se.util;
 
 import static org.junit.Assert.*;
 

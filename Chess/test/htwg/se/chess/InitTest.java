@@ -1,4 +1,4 @@
-package htwg.se.controller;
+package htwg.se.chess;
 
 
 

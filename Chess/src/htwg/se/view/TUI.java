@@ -17,6 +17,7 @@ public class TUI implements UI, IObserver {
 		this.controller = controller;
 		firstpressed = false;
 		first = null;
+		controller.addObserver(this);
 	}
 
 	
@@ -76,7 +77,6 @@ public class TUI implements UI, IObserver {
 	@Override
 	public void update(Event e) {
 		printUI();
-		
 	}
 
 }

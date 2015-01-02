@@ -1,6 +1,9 @@
 package htwg.se.util;
 
-import static org.junit.Assert.*;
+
+import htwg.se.controller.ChessController;
+import htwg.se.model.GameField;
+import htwg.se.view.TUI;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +18,13 @@ public class ObservableTest {
 
 	@Test
 	public void test() {
-
+		TUI tui = new TUI(new ChessController(new GameField()));
+		observ.addObserver(tui);
+		
+		observ.notifyObservers(null);
+		observ.removeObserver(tui);
+		observ.removeAllObservers();
+		observ.notifyObservers(null);
 	}
 
 }

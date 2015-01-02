@@ -17,7 +17,7 @@ public class Tower extends Chesspiece {
 	@Override
 	public Point[] validMove(int x, int y) {
 
-		if (equalPosition(x, y)) {
+		if (equalPosition(x, y) || outRange(x,y)) {
 			return null;
 		}
 		
@@ -27,13 +27,24 @@ public class Tower extends Chesspiece {
 
 	}
 
+	private boolean outRange(int x, int y) {
+		if(x >= 8 || x < 0) {
+			return true;
+		}
+		else if(y >= 8 || y < 0) {
+			return true;
+		}
+		
+		return false;
+	}
+
 	private void whichDirection(int x, int y) {
 		if (x != p.getX() && y == p.getY()) {
 			horizontal(x, y);
-		} else if (x == p.getX() && y != p.getY()) {
+		}
+		if (x == p.getX() && y != p.getY())
 			vertical(x, y);
-		} else 
-			diagonal(x, y);
+		
 	}
 
 	private boolean equalPosition(int x, int y) {
@@ -95,32 +106,7 @@ public class Tower extends Chesspiece {
 		}
 	}
 
-	private void diagonal(int x, int y) {
-		if (p.getX() < x && p.getY() < y) {
-			upDiagonal(x, y);
-		} else {
-			downDiagonal(x, y);
-		}
-
-	}
-
-	private void upDiagonal(int x, int y) {
-		int n = 0;
-		for (int i = p.getX(); i <= x; i++) {
-			validMovesList.add(new Point(p.getX() + n, p.getY() + n));
-			n++;
-		}
-
-	}
-
-	private void downDiagonal(int x, int y) {
-		int n = 0;
-		for (int i = p.getX(); i >= x; i--) {
-			validMovesList.add(new Point(p.getX() - n, p.getY() - n));
-			n++;
-		}
-
-	}
+	
 
 	@Override
 	public char toChar() {

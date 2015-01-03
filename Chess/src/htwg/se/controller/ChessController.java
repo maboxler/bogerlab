@@ -19,6 +19,12 @@ public class ChessController extends Observable{
 		return gamefield.getField();
 	}
 	
+	public String getStatusMessage() {
+		if(blackturn)
+			return "It's blacks turn";
+		return "It's whites turn";
+	}
+	
 	public void move(Point start, Point goal) {
 		if (checkTurn(start)) {
 			if (gamefield.moveCheck(start, goal)) {

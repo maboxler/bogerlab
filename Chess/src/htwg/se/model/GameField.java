@@ -156,6 +156,7 @@ public class GameField {
 	public boolean beatable(Piece target, Piece figure) {
 		return target.getcolor() != figure.getcolor();
 	}
+
 	
 	public boolean whiteWon() {
 		if(blackKing.alive)

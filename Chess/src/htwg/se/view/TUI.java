@@ -28,9 +28,10 @@ public class TUI implements UI, IObserver {
 			testAusgabe += "|";
 			for(int x = 0; x <= 7; ++x) {
 				if (field[x][y].getChessPiece() != null) {
+					testAusgabe += field[x][y].getChessPiece().getcolor();
 					testAusgabe += field[x][y].getChessPiece().toChar();
 				} else {
-					testAusgabe += " ";
+					testAusgabe += "  ";
 				}
 				testAusgabe += "|";
 			}
@@ -38,6 +39,7 @@ public class TUI implements UI, IObserver {
 			System.out.println(testAusgabe);
 			testAusgabe = "";
 		}
+		message(controller.getStatusMessage());
 		
 	}
 
@@ -65,10 +67,10 @@ public class TUI implements UI, IObserver {
 		}
 		first = new Point(x,y);
 		firstpressed = true;
+		
 
 	}
 
-	@Override
 	public void message(String text) {
 		System.out.println(text);
 		

@@ -13,8 +13,5 @@ public interface UI {
 	 */
 	public void pressed(int x, int y);
 	
-	/*
-	 * Displays the given Message
-	 */
-	public void message(String text);
+
 }

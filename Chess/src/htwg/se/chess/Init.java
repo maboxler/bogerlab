@@ -18,6 +18,7 @@ public class Init {
 		ChessController cc = new ChessController(gameField);
 		scanner = new Scanner(System.in);
 		TUI tui = new TUI(cc);
+		tui.update(null);
 		while(!gameField.blackWon() && !gameField.whiteWon()) {
 			tui.processInputLine(scanner.nextLine());
 		}

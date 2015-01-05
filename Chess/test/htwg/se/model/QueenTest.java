@@ -70,6 +70,8 @@ public class QueenTest {
 		queen = new Queen(2,3,'w');
 		assertNotNull(queen.validMove(2,4));
 		assertNotNull(queen.validMove(2,1));
+		assertNotNull(queen.validMove(2,7));
+		
 	}
 
 

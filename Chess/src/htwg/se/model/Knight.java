@@ -20,7 +20,7 @@ public class Knight extends Chesspiece {
 	@Override
 	public Point[] validMove(int x, int y) {
 		
-		if (equalPosition(x, y) || outRange(x, y)) {
+		if (equalPosition(x, y) || outRange(x, y) || tMove(x,y)) {
 			return null;
 		}
 
@@ -29,6 +29,30 @@ public class Knight extends Chesspiece {
 		return listToArray();
 	}
 	
+	private boolean tMove(int x, int y) {
+		List<Point> allMoveList = new ArrayList<Point>();
+		Point move = new Point(x,y);
+		//up
+		allMoveList.add(new Point(p.getX()+1, p.getY()+2));
+		allMoveList.add(new Point(p.getX()-1, p.getY()+2));
+		//down
+		allMoveList.add(new Point(p.getX()+1, p.getY()-2));
+		allMoveList.add(new Point(p.getX()-1, p.getY()-2));
+		//righ
+		allMoveList.add(new Point(p.getX()+2, p.getY()+1));
+		allMoveList.add(new Point(p.getX()+2, p.getY()-1));
+		//left
+		allMoveList.add(new Point(p.getX()-2, p.getY()+1));
+		allMoveList.add(new Point(p.getX()-2, p.getY()-1));
+		
+		for (Point point : allMoveList) {
+			if(move.equals(point))
+				return false;
+		}
+
+		return true;
+	}
+
 	private boolean outRange(int x, int y) {
 		if (x >= 8 || x < 0) {
 			return true;

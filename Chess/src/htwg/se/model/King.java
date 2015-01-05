@@ -78,7 +78,6 @@ public class King extends Chesspiece {
 	}
 
 	private void horizontal(int x, int y) {
-		System.out.println(p.getX() +" < "+x);
 		if (p.getX() < x) {
 			rightHorizontal(x, y);
 		} else

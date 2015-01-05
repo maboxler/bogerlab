@@ -41,6 +41,9 @@ public class KingTest {
 		assertNotNull(king.validMove(3, 2));
 		assertNotNull(king.validMove(1, 3));
 		
+		king = new King(0,0,'w');
+		assertNotNull(king.validMove(1,1));
+		
 	}
 	
 	@Test

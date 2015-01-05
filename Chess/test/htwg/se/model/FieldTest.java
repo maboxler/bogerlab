@@ -17,6 +17,7 @@ public class FieldTest {
 	@Test
 	public void test() {
 		assertEquals(testfield.getChessPiece(), null);
+		assertNull(testfield.getChessPiece());
 		testfield = new Field(new Point(1,1),null);
 		assertEquals(testfield.getChessPiece(), null);
 		assertEquals(testfield.getFieldCoordinates().equals(new Point(1,1)), true);

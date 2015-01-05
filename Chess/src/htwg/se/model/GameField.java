@@ -128,7 +128,7 @@ public class GameField {
 		
 	}
 	
-	public boolean checkValid(Piece figure, Point to) {
+	private boolean checkValid(Piece figure, Point to) {
 		Point[] path = figure.validMove(to.getX(), to.getY());
 		if(path == null)
 			return false;
@@ -136,17 +136,18 @@ public class GameField {
 		
 	}
 	
-	public boolean checkPath(Piece figure, Point[] path) {
-		for(int i = path.length - 1; i > 0; --i) {
+	private boolean checkPath(Piece figure, Point[] path) {
+		for(int i = 0; i > path.length -2; ++i) {
 			if(field[path[i].getX()][path[i].getY()] != null) {
 				return false;
 			}
 		}
+		
 		return checkGoal(path[0], figure);
 		
 	}
 	
-	public boolean checkGoal(Point goal, Piece figure) {
+	private boolean checkGoal(Point goal, Piece figure) {
 	Field goalfield = field[goal.getX()][goal.getY()];
 		if(goalfield.getChessPiece() ==  null)
 			return true;

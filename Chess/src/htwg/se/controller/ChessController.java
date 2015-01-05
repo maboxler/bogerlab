@@ -29,9 +29,10 @@ public class ChessController extends Observable{
 		if (checkTurn(start)) {
 			if (gamefield.moveCheck(start, goal)) {
 				gamefield.moveAfterCheck(start, goal);
+				blackturn = !blackturn;
 			}
 		}
-		blackturn = !blackturn;
+		
 		notifyObservers();
 		
 	}

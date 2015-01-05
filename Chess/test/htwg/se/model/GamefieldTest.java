@@ -111,5 +111,13 @@ public class GamefieldTest {
 		gamefield.getField()[4][0].getChessPiece().kill();
 		assertTrue(gamefield.blackWon());
 	}
+	
+	@Test
+	public void movetest() {
+		assertFalse(gamefield.moveCheck(new Point(1, 0),new Point(1,0)));
+		assertFalse(gamefield.moveCheck(new Point(1, 3),new Point(1,0)));
+		assertFalse(gamefield.moveCheck(new Point(1, 0),new Point(3,0)));
+		
+	}
 
 }

@@ -114,9 +114,11 @@ public class GamefieldTest {
 	
 	@Test
 	public void movetest() {
+		gamefield = new GameField();
 		assertFalse(gamefield.moveCheck(new Point(1, 0),new Point(1,0)));
 		assertFalse(gamefield.moveCheck(new Point(1, 3),new Point(1,0)));
 		assertFalse(gamefield.moveCheck(new Point(1, 0),new Point(3,0)));
+		assertFalse(gamefield.moveCheck(new Point(3, 3),new Point(3,4)));
 		
 	}
 

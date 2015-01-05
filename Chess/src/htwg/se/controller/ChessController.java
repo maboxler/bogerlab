@@ -39,11 +39,11 @@ public class ChessController extends Observable{
 	
 	private boolean checkTurn(Point start) {
 		Field field[][] = gamefield.getField();
-		Chesspiece piece = field[start.getX()][start.getY()].getChessPiece();
+		Chesspiece piece = field[start.getX()][start.getY()].getChessPiece();		
 		if(piece == null) {
 			return false;
 		} 
-		
+		System.out.println(piece.toChar());
 		return colorCheck(piece);
 	}
 	

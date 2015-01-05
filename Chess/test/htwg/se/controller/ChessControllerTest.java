@@ -22,5 +22,13 @@ public class ChessControllerTest {
 		assertNotNull(cs.getField());
 		cs.reset();
 	}
+	
+	@Test
+	public void moveTest() {
+		cs.move(new Point(1, 0),new Point(1,0));
+		cs.move(new Point(1, 3),new Point(1,0));
+		cs.move(new Point(1, 0),new Point(3,0));
+		cs.move(new Point(3, 3),new Point(3,4));
+	}
 
 }

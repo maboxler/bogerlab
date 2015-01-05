@@ -42,6 +42,13 @@ public class TowerTest {
     	assertNotNull(testtower.validMove(2,4));
     	assertNotNull(testtower.validMove(4,5));
     	assertNull(testtower.validMove(4,4));
+    	assertNull(testtower.validMove(4,4));
+    	
+    	assertNotNull(testtower.validMove(4,5));
+    	assertNotNull(testtower.validMove(4,3));
+    	
+    	assertNotNull(testtower.validMove(5,5));
+    	assertNotNull(testtower.validMove(3,5));
 	}
 	
 	@Test

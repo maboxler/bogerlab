@@ -16,24 +16,33 @@ public class KnightTest {
 	
 	@Test
 	public void outRangeTest() {	
-		assertNull(knight.validMove(-1, 1));
-		assertNull(knight.validMove(8, 1));
-		assertNull(knight.validMove(1, -1));
-		assertNull(knight.validMove(1, 8));	
+		assertNull(knight.validMove(-1, 3));
+		assertNull(knight.validMove(10, 3));
+		assertNull(knight.validMove(3, -1));
+		assertNull(knight.validMove(3, 10));
+		assertNotNull(knight.validMove(3, 3));
 	}
 		
 	@Test
 	public void equalPositionTest() {
 		knight = new Knight(2,3,'w');
-//		assertNotNull(knight.validMove(2, 3));
 		assertNull(knight.validMove(2, 3));
-//		assertNotNull(knight.validMove(3, 4));
-//		assertNotNull(knight.validMove(3, 3));
+		assertNotNull(knight.validMove(3, 4));
+		assertNotNull(knight.validMove(2, 4));
 	}
 	
 	@Test
 	public void validMoveTest() {
-		assertNull(knight.validMove(1, 1));
+		knight = new Knight(2,3,'w');
+		assertNull(knight.validMove(2, 3));
+		assertNotNull(knight.validMove(3, 3));	
+		assertNotNull(knight.validMove(3, 3));
+		assertNotNull(knight.validMove(1, 3));
+		assertNotNull(knight.validMove(0, 4));
+		
+		
+		
+		
 	}
     	
 	
@@ -72,8 +81,8 @@ public class KnightTest {
 
 	@Test
 	public void test() {
-		//assertEquals(knight.toChar(), 'K');
-		//assertNull(knight.validMove(1, 1));
+		assertEquals(knight.toChar(), 'H');
+		assertNull(knight.validMove(1, 1));
 	}
 
 }

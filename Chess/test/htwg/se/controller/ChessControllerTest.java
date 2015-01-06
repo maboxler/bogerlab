@@ -31,6 +31,7 @@ public class ChessControllerTest {
 		cs.move(new Point(3, 3),new Point(3,4));
 		assertEquals("It's blacks turn", cs.getStatusMessage());
 		assertEquals(cs.getField()[0][1].getChessPiece().toChar(),'P');
+		assertEquals(cs.getField()[1][7].getChessPiece().toChar(), 'H');
 		cs.move(new Point(1, 7),new Point(0,5));
 		assertEquals("It's whites turn", cs.getStatusMessage());
 		assertNull(cs.getField()[1][7].getChessPiece());

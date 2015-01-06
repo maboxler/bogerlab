@@ -137,7 +137,7 @@ public class GameField {
 	}
 	
 	private boolean checkPath(Piece figure, Point[] path) {
-		for(int i = 0; i > path.length -2; ++i) {
+		for(int i = 0; i < path.length -2; ++i) {
 			if(field[path[i].getX()][path[i].getY()].getChessPiece() != null) {
 				return false;
 			}

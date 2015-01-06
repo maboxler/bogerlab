@@ -29,7 +29,7 @@ public class ChessController extends Observable{
 		if (checkTurn(start)) {
 			if (gamefield.moveCheck(start, goal)) {
 				gamefield.moveAfterCheck(start, goal);
-				blackturn = !blackturn;
+				blackturn = (!blackturn);
 			}
 		}
 		
@@ -37,13 +37,14 @@ public class ChessController extends Observable{
 		
 	}
 	
+
+	
 	private boolean checkTurn(Point start) {
 		Field field[][] = gamefield.getField();
 		Chesspiece piece = field[start.getX()][start.getY()].getChessPiece();		
 		if(piece == null) {
 			return false;
 		} 
-		System.out.println(piece.toChar());
 		return colorCheck(piece);
 	}
 	

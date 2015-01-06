@@ -34,14 +34,10 @@ public class KnightTest {
 		assertNotNull(knight.validMove(3, 5));
 		assertNotNull(knight.validMove(0, 4));
 		
-		//x != p.getX() && y > p.getY()
-//		assertNotNull(knight.validMove(1, 5));
-//		
-//		assertNotNull(knight.validMove(3, 5));
-//		assertNotNull(knight.validMove(0, 4));
-//		assertNotNull(knight.validMove(3, 5));
-//		
 		
+		knight = new Knight(1,7,'w');
+		assertNotNull(knight.validMove(0, 5));
+
 	}
 	
 	@Test

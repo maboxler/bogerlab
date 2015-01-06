@@ -34,13 +34,7 @@ public class TowerTest {
     	
 	
 	@Test
-	public void verticalTest() {			
-		assertNotNull(testtower.validMove(2,1));
-		Point[] array = testtower.validMove(2, 1);
-		for (Point point : array) {
-			System.out.println(point.getX() + "x " + point.getY() + "y");
-		}
-		
+	public void verticalTest() {		
     	assertNotNull(testtower.validMove(1,0)); //1
     	
     	testtower = new Tower(4,4,'w');

@@ -23,7 +23,7 @@ public class Bishop extends Chesspiece {
 		}
 		
 		whichDirection(x, y);
-
+		System.out.println("x:"+x+"  y:"+y);
 		return listToArray();
 
 	}

@@ -123,8 +123,14 @@ public class Knight extends Chesspiece {
 		Point pointField[] = new Point[validMovesList.size()];
 		int i = 0;
 		for (Point point : validMovesList) {
-			pointField[i] = point;
-			i++;
+			
+			if(i == 0) {
+				i++;	
+			} else {
+				pointField[i-1] = point;
+				i++;
+			}
+			
 		}
 		validMovesList.clear();
 

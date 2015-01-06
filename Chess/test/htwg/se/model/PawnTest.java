@@ -64,7 +64,10 @@ public class PawnTest {
 		assertNotNull(testpawn.validMove(3, 2));
 		testpawn = new Pawn(2,1,'w');
 		assertNotNull(testpawn.validMove(1, 2));
-		
+//		testpawn = new Pawn(2,1,'w');
+//		assertNotNull(testpawn.validMove(2, 3));
+//		assertNotNull(testpawn.validMove(2, 4));
+		//assertNotNull(testpawn.validMove(2, 5));
 //		assertNotNull(testpawn.validMove(2, 2));
 //		testpawn = new Pawn(2,1,'w');
 //		assertNotNull(testpawn.validMove(2, 3));

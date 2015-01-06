@@ -55,12 +55,18 @@ public class Tower extends Chesspiece {
 		return false;
 	}
 
-	private Point[] listToArray() {	
+	private Point[] listToArray() {
 		Point pointField[] = new Point[validMovesList.size()];
 		int i = 0;
 		for (Point point : validMovesList) {
-			pointField[i] = point;
-			i++;
+			
+			if(i == 0) {
+				i++;	
+			} else {
+				pointField[i-1] = point;
+				i++;
+			}
+			
 		}
 		validMovesList.clear();
 

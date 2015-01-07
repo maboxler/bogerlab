@@ -174,9 +174,11 @@ public class GameField {
 	public void  moveAfterCheck(Point from, Point to) {
 		Field targetField = field[to.getX()][to.getY()];
 		Field fromField = field[from.getX()][from.getY()];
+		Chesspiece cp = fromField.getChessPiece();
 		if(targetField.getChessPiece() != null)
 			targetField.getChessPiece().kill();
-		targetField.setChessPiece(fromField.getChessPiece());
+		cp.setPosition(to);
+		targetField.setChessPiece(cp);
 		fromField.setChessPiece(null);
 	}
 }

@@ -58,5 +58,20 @@ public class ChessControllerTest {
 		assertEquals(cs.getField()[1][7].getChessPiece().toChar(),'H');
 		assertNull(cs.getField()[7][4].getChessPiece());
 	}
+	
+	@Test
+	public void KnightTest() {
+		assertEquals(cs.getField()[1][7].getChessPiece().toChar(), 'H');
+		assertNull(cs.getField()[0][5].getChessPiece());
+		cs.move(new Point(1,7),new Point(0,5));
+		assertEquals(cs.getField()[0][5].getChessPiece().toChar(), 'H');
+		assertNull(cs.getField()[1][7].getChessPiece());
+		cs.move(new Point(1,0), new Point(0,2));
+		assertTrue(cs.getField()[0][5].getChessPiece().getPosition().equals(new Point(0,5)));
+		cs.move(new Point(0,5),new Point(1,7));
+		
+		//assertEquals(cs.getField()[1][7].getChessPiece().toChar(), 'H');
+		//assertNull(cs.getField()[0][5].getChessPiece());
+	}
 
 }

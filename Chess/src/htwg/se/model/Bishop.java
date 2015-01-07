@@ -6,13 +6,11 @@ import java.util.List;
 
 public class Bishop extends Chesspiece {
 
-	private Point p;
 	private List<Point> validMovesList;
 	
 	public Bishop(int x, int y, char color) {
 		super(x, y, color);
 		validMovesList = new ArrayList<Point>();
-		p = getPosition();
 	}
 
 	@Override
@@ -23,7 +21,6 @@ public class Bishop extends Chesspiece {
 		}
 		
 		whichDirection(x, y);
-		System.out.println("x:"+x+"  y:"+y);
 		return listToArray();
 
 	}
@@ -44,7 +41,7 @@ public class Bishop extends Chesspiece {
 	}
 
 	private boolean equalPosition(int x, int y) {
-		if (p.getX() == x && p.getY() == y)
+		if (this.x == x && this.y == y)
 			return true;
 
 		return false;
@@ -69,7 +66,7 @@ public class Bishop extends Chesspiece {
 	}
 
 	private void diagonal(int x, int y) {
-		if (p.getY() < y) {
+		if (this.y < y) {
 			upDiagonal(x, y);
 		} else {
 			downDiagonal(x, y);
@@ -78,7 +75,7 @@ public class Bishop extends Chesspiece {
 	}
 
 	private void upDiagonal(int x, int y) {
-		if(x < p.getX()) {
+		if(x < this.x) {
 			leftUpDiagonal(x);
 		} else {
 			rightUpDiagonal(x);
@@ -89,7 +86,7 @@ public class Bishop extends Chesspiece {
 	private void leftUpDiagonal(int x) {
 		int n = 0;
 		for (int i = x; i >= x; i--) {
-			validMovesList.add(new Point(p.getX() - n, p.getY() + n));
+			validMovesList.add(new Point(this.x - n, this.y + n));
 			n++;
 		}
 		
@@ -97,14 +94,14 @@ public class Bishop extends Chesspiece {
 
 	private void rightUpDiagonal(int x) {
 		int n = 0;
-		for (int i = p.getX(); i <= x; i++) {
-			validMovesList.add(new Point(p.getX() + n, p.getY() + n));
+		for (int i = this.x; i <= x; i++) {
+			validMovesList.add(new Point(this.x + n, this.y + n));
 			n++;
 		}
 	}
 
 	private void downDiagonal(int x, int y) {
-		if(x<p.getX()) {
+		if(x<this.x) {
 			leftDownDiagonal(y);
 		} else {
 			rightDownDiagonal(x);
@@ -114,8 +111,8 @@ public class Bishop extends Chesspiece {
 	
 	private void leftDownDiagonal(int x) {
 		int n = 0;
-		for (int i = p.getX(); i >= x; i--) {
-			validMovesList.add(new Point(p.getX() - n, p.getY() - n));
+		for (int i = this.x; i >= x; i--) {
+			validMovesList.add(new Point(this.x - n, this.y - n));
 			n++;
 		}
 		
@@ -123,8 +120,8 @@ public class Bishop extends Chesspiece {
 	
 	private void rightDownDiagonal(int x) {
 		int n = 0;
-		for (int i = p.getX(); i <= x; i++) {
-			validMovesList.add(new Point(p.getX() + n, p.getY() - n));
+		for (int i = this.x; i <= x; i++) {
+			validMovesList.add(new Point(this.x + n, this.y - n));
 			n++;
 		}
 		

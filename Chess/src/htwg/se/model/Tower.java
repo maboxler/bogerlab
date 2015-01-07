@@ -6,13 +6,12 @@ import java.util.List;
 
 public class Tower extends Chesspiece {
 
-	private Point p;
+
 	private List<Point> validMovesList;
 
 	public Tower(int x, int y, char color) {
 		super(x, y, color);
 		validMovesList = new ArrayList<Point>();
-		p = getPosition();
 	}
 
 	@Override
@@ -40,16 +39,16 @@ public class Tower extends Chesspiece {
 	}
 
 	private void whichDirection(int x, int y) {
-		if (x != p.getX() && y == p.getY()) {
+		if (x != this.x && y == this.y) {
 			horizontal(x, y);
 		}
-		if (x == p.getX() && y != p.getY())
+		if (x == this.x && y != this.y)
 			vertical(x, y);
 		
 	}
 
 	private boolean equalPosition(int x, int y) {
-		if (p.getX() == x && p.getY() == y)
+		if (this.x == x && this.y == y)
 			return true;
 
 		return false;
@@ -74,7 +73,7 @@ public class Tower extends Chesspiece {
 	}
 
 	private void horizontal(int x, int y) {
-		if (p.getX() < x) {
+		if (this.x < x) {
 			rightHorizontal(x, y);
 		} else
 			leftHorizontal(x, y);
@@ -82,19 +81,19 @@ public class Tower extends Chesspiece {
 	}
 
 	private void leftHorizontal(int x, int y) {
-		for (int i = p.getX(); i >= x; i--) {
+		for (int i = this.x; i >= x; i--) {
 			validMovesList.add(new Point(i, y));
 		}
 	}
 
 	private void rightHorizontal(int x, int y) {
-		for (int i = p.getX(); i <= x; i++) { 
+		for (int i = this.x; i <= x; i++) { 
 			validMovesList.add(new Point(i, y));
 		}
 	}
 
 	private void vertical(int x, int y) {
-		if (p.getY() < y) {
+		if (this.y < y) {
 			upVertical(x, y);
 		} else {
 			downVertical(x, y);
@@ -102,13 +101,13 @@ public class Tower extends Chesspiece {
 	}
 
 	private void upVertical(int x, int y) {
-		for (int i = p.getY(); i <= y; i++) {
+		for (int i = this.y; i <= y; i++) {
 			validMovesList.add(new Point(x, i));
 		}
 	}
 
 	private void downVertical(int x, int y) {
-		for (int i = p.getY(); i >= y; i--) {
+		for (int i = this.y; i >= y; i--) {
 			validMovesList.add(new Point(x, i));
 		}
 	}

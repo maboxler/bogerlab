@@ -18,6 +18,10 @@ public abstract  class Chesspiece implements Piece{
 		return this.color;
 	}
 	
+	public void setmovedTrue() {
+		this.moved = true;
+	}
+	
 	public void setPosition(Point p){//setter for x and y
 		this.x = p.getX();
 		this.y = p.getY();

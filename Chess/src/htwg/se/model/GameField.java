@@ -124,8 +124,22 @@ public class GameField {
 		Chesspiece figure = field[from.getX()][from.getY()].getChessPiece();
 		if(figure == null) 
 			return false;
-		return checkValid(figure,to);
+		return checkPawn(figure,to);
 		
+	}
+	
+	private boolean checkPawn(Piece figure, Point to) {
+		if(figure.toChar() == 'P') {
+			return PawnRoutine(figure,to);
+		}
+		return checkValid(figure,to);
+	}
+	
+	/*
+	 * checks if 
+	 */
+	private boolean PawnRoutine(Piece p, Point to) {
+		return false;
 	}
 	
 	private boolean checkValid(Piece figure, Point to) {
@@ -178,6 +192,7 @@ public class GameField {
 		if(targetField.getChessPiece() != null)
 			targetField.getChessPiece().kill();
 		cp.setPosition(to);
+		cp.setmovedTrue();
 		targetField.setChessPiece(cp);
 		fromField.setChessPiece(null);
 	}

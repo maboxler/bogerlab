@@ -70,8 +70,8 @@ public class ChessControllerTest {
 		assertTrue(cs.getField()[0][5].getChessPiece().getPosition().equals(new Point(0,5)));
 		cs.move(new Point(0,5),new Point(1,7));
 		
-		//assertEquals(cs.getField()[1][7].getChessPiece().toChar(), 'H');
-		//assertNull(cs.getField()[0][5].getChessPiece());
+		assertEquals(cs.getField()[1][7].getChessPiece().toChar(), 'H');
+		assertNull(cs.getField()[0][5].getChessPiece());
 	}
 
 }

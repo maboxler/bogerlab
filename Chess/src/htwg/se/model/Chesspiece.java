@@ -3,9 +3,9 @@ package htwg.se.model;
 import htwg.se.util.*;
 
 public abstract  class Chesspiece implements Piece{
+	
 	protected int x;// X-Cordinates of the piece
 	protected int y;// Y-Cordinates of the Piece
-	protected Point p;
 	protected char color; //Black or White
 	protected boolean moved;
 	protected boolean alive;

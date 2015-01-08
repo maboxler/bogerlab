@@ -3,9 +3,10 @@ package htwg.se.model;
 import htwg.se.util.*;
 
 public abstract  class Chesspiece implements Piece{
-	private int x;// X-Cordinates of the piece
-	private int y;// Y-Cordinates of the Piece
-	private char color; //Black or White
+	
+	protected int x;// X-Cordinates of the piece
+	protected int y;// Y-Cordinates of the Piece
+	protected char color; //Black or White
 	protected boolean moved;
 	protected boolean alive;
 	
@@ -17,7 +18,11 @@ public abstract  class Chesspiece implements Piece{
 		return this.color;
 	}
 	
-	public void setPosition(Point p){//setter for x
+	public void setmovedTrue() {
+		this.moved = true;
+	}
+	
+	public void setPosition(Point p){//setter for x and y
 		this.x = p.getX();
 		this.y = p.getY();
 	}

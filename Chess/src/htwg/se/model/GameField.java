@@ -124,8 +124,22 @@ public class GameField {
 		Chesspiece figure = field[from.getX()][from.getY()].getChessPiece();
 		if(figure == null) 
 			return false;
-		return checkValid(figure,to);
+		return checkPawn(figure,to);
 		
+	}
+	
+	private boolean checkPawn(Piece figure, Point to) {
+		if(figure.toChar() == 'P') {
+			return PawnRoutine(figure,to);
+		}
+		return checkValid(figure,to);
+	}
+	
+	/*
+	 * checks if 
+	 */
+	private boolean PawnRoutine(Piece p, Point to) {
+		return false;
 	}
 	
 	private boolean checkValid(Piece figure, Point to) {
@@ -137,7 +151,7 @@ public class GameField {
 	}
 	
 	private boolean checkPath(Piece figure, Point[] path) {
-		for(int i = 0; i > path.length -2; ++i) {
+		for(int i = 0; i < path.length -2; ++i) {
 			if(field[path[i].getX()][path[i].getY()].getChessPiece() != null) {
 				return false;
 			}
@@ -174,9 +188,12 @@ public class GameField {
 	public void  moveAfterCheck(Point from, Point to) {
 		Field targetField = field[to.getX()][to.getY()];
 		Field fromField = field[from.getX()][from.getY()];
+		Chesspiece cp = fromField.getChessPiece();
 		if(targetField.getChessPiece() != null)
 			targetField.getChessPiece().kill();
-		targetField.setChessPiece(fromField.getChessPiece());
+		cp.setPosition(to);
+		cp.setmovedTrue();
+		targetField.setChessPiece(cp);
 		fromField.setChessPiece(null);
 	}
 }

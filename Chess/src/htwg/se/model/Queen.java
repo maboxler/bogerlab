@@ -6,13 +6,12 @@ import java.util.List;
 
 public class Queen extends Chesspiece {
 
-	private Point p;
+
 	private List<Point> validMovesList;
 	
 	public Queen(int x, int y, char color) {
 		super(x, y, color);
 		validMovesList = new ArrayList<Point>();
-		p = getPosition();
 	}
 
 	@Override
@@ -40,16 +39,16 @@ public class Queen extends Chesspiece {
 	}
 		
 	private void whichDirection(int x, int y) {
-		if (x != p.getX() && y == p.getY()) {
+		if (x != this.x && y == this.y) {
 			horizontal(x, y);
-		} else if (x == p.getX() && y != p.getY()) {
+		} else if (x == this.x && y != this.y) {
 			vertical(x, y);
 		} else 
 			diagonal(x, y);
 	}
 
 	private boolean equalPosition(int x, int y) {
-		if (p.getX() == x && p.getY() == y)
+		if (this.x == x && this.y == y)
 			return true;
 
 		return false;
@@ -74,7 +73,7 @@ public class Queen extends Chesspiece {
 	}
 
 	private void horizontal(int x, int y) {
-		if (p.getX() < x) {
+		if (this.x < x) {
 			rightHorizontal(x, y);
 		} else
 			leftHorizontal(x, y);
@@ -82,19 +81,19 @@ public class Queen extends Chesspiece {
 	}
 
 	private void leftHorizontal(int x, int y) {
-		for (int i = p.getX(); i >= x; i--) {
+		for (int i = this.x; i >= x; i--) {
 			validMovesList.add(new Point(i, y));
 		}
 	}
 
 	private void rightHorizontal(int x, int y) {
-		for (int i = p.getX(); i <= x; i++) { 
+		for (int i = this.x; i <= x; i++) { 
 			validMovesList.add(new Point(i, y));
 		}
 	}
 
 	private void vertical(int x, int y) {
-		if (p.getY() < y) {
+		if (this.y < y) {
 			upVertical(x, y);
 		} else {
 			downVertical(x, y);
@@ -102,19 +101,19 @@ public class Queen extends Chesspiece {
 	}
 
 	private void upVertical(int x, int y) {
-		for (int i = p.getY(); i <= y; i++) {
+		for (int i = this.y; i <= y; i++) {
 			validMovesList.add(new Point(x, i));
 		}
 	}
 
 	private void downVertical(int x, int y) {
-		for (int i = p.getY(); i >= y; i--) {
+		for (int i = this.y; i >= y; i--) {
 			validMovesList.add(new Point(x, i));
 		}
 	}
 
 	private void diagonal(int x, int y) {
-		if (p.getY() < y) {
+		if (this.y < y) {
 			upDiagonal(x, y);
 		} else {
 			downDiagonal(x, y);
@@ -123,7 +122,7 @@ public class Queen extends Chesspiece {
 	}
 
 	private void upDiagonal(int x, int y) {
-		if(x < p.getX()) {
+		if(x < this.x) {
 			leftUpDiagonal(x);
 		} else {
 			rightUpDiagonal(x);
@@ -136,7 +135,7 @@ public class Queen extends Chesspiece {
 	private void leftUpDiagonal(int x) {
 		int n = 0;
 		for (int i = x; i >= x; i--) {
-			validMovesList.add(new Point(p.getX() - n, p.getY() + n));
+			validMovesList.add(new Point(this.x - n, this.y + n));
 			n++;
 		}
 		
@@ -144,14 +143,14 @@ public class Queen extends Chesspiece {
 
 	private void rightUpDiagonal(int x) {
 		int n = 0;
-		for (int i = p.getX(); i <= x; i++) {
-			validMovesList.add(new Point(p.getX() + n, p.getY() + n));
+		for (int i = this.x; i <= x; i++) {
+			validMovesList.add(new Point(this.x + n, this.y + n));
 			n++;
 		}
 	}
 
 	private void downDiagonal(int x, int y) {
-		if(x<p.getX()) {
+		if(x<this.x) {
 			leftDownDiagonal(y);
 		} else {
 			rightDownDiagonal(x);
@@ -161,8 +160,8 @@ public class Queen extends Chesspiece {
 	
 	private void leftDownDiagonal(int x) {
 		int n = 0;
-		for (int i = p.getX(); i >= x; i--) {
-			validMovesList.add(new Point(p.getX() - n, p.getY() - n));
+		for (int i = this.x; i >= x; i--) {
+			validMovesList.add(new Point(this.x - n, this.y - n));
 			n++;
 		}
 		
@@ -170,8 +169,8 @@ public class Queen extends Chesspiece {
 	
 	private void rightDownDiagonal(int x) {
 		int n = 0;
-		for (int i = p.getX(); i <= x; i++) {
-			validMovesList.add(new Point(p.getX() + n, p.getY() - n));
+		for (int i = this.x; i <= x; i++) {
+			validMovesList.add(new Point(this.x + n, this.y - n));
 			n++;
 		}
 		

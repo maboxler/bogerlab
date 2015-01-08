@@ -1,6 +1,7 @@
 package htwg.se.model;
 
 import static org.junit.Assert.*;
+import htwg.se.util.Point;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -30,13 +31,21 @@ public class KnightTest {
 		assertNull(knight.validMove(2, 3));
 		assertNull(knight.validMove(1, 3));
 		assertNull(knight.validMove(2, 4));
-		
-		assertNotNull(knight.validMove(3, 5));
-		assertNotNull(knight.validMove(0, 4));
+		Point[] array = knight.validMove(3, 5);
+		System.out.println(array[0].getX());
+		System.out.println(array[0].getY());
+		assertTrue(array[0].equals(new Point(3,5)));
+		assertEquals(array.length, 1);
+		array = knight.validMove(0, 4);
+		assertTrue(array[0].equals(new Point(0,4)));
 		
 		
 		knight = new Knight(1,7,'w');
 		assertNotNull(knight.validMove(0, 5));
+		knight = new Knight(0,5,'w');
+		array = knight.validMove(1, 7);
+		assertEquals(array.length, 1);
+		assertTrue(array[0].equals(new Point(1,7)));
 
 	}
 	

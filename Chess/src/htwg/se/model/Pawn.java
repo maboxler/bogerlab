@@ -8,14 +8,12 @@ import htwg.se.util.Point;
 public class Pawn extends Chesspiece {
 
 	boolean moved;
-	private Point p;
 	private List<Point> validMovesList;
 
 	public Pawn(int x, int y, char color) {
 		super(x, y, color);
 		moved = false;
 		validMovesList = new ArrayList<Point>();
-		p = getPosition();
 	}
 
 	@Override
@@ -45,14 +43,14 @@ public class Pawn extends Chesspiece {
 	}
 
 	private void whichDirection(int x, int y) {
-		if (x == p.getX() && y > p.getY()) {
+		if (x == this.x && y > this.y) {
 			vertical(x, y);
 		} else
 			diagonal(x, y);
 	}
 
 	private void diagonal(int x, int y) {
-		if(x < p.getX()) 
+		if(x < this.x) 
 			leftUpDiagonal(x);
 		 else 
 			rightUpDiagonal(x);
@@ -61,7 +59,7 @@ public class Pawn extends Chesspiece {
 	private void leftUpDiagonal(int x) {
 		int n = 0;
 		for (int i = x; i >= x; i--) {
-			validMovesList.add(new Point(p.getX() - n, p.getY() + n));
+			validMovesList.add(new Point(this.x - n, this.y + n));
 			n++;
 		}
 		
@@ -69,14 +67,14 @@ public class Pawn extends Chesspiece {
 
 	private void rightUpDiagonal(int x) {
 		int n = 0;
-		for (int i = p.getX(); i <= x; i++) {
-			validMovesList.add(new Point(p.getX() + n, p.getY() + n));
+		for (int i = this.x; i <= x; i++) {
+			validMovesList.add(new Point(this.x + n, this.y + n));
 			n++;
 		}
 	}
 
 	private boolean equalPosition(int x, int y) {
-		if (p.getX() == x && p.getY() == y)
+		if (this.x == x && this.y == y)
 			return true;
 
 		return false;
@@ -86,12 +84,12 @@ public class Pawn extends Chesspiece {
 		List<Point> allMoveList = new ArrayList<Point>();
 		Point move = new Point(x,y);
 		
-		allMoveList.add(new Point(p.getX(), p.getY()+1));
-		allMoveList.add(new Point(p.getX()+1, p.getY()+1));
-		allMoveList.add(new Point(p.getX()-1, p.getY()+1));
+		allMoveList.add(new Point(this.x, this.y+1));
+		allMoveList.add(new Point(this.x+1, this.y+1));
+		allMoveList.add(new Point(this.x-1, this.y+1));
 		
 		if(moved == false) {
-			allMoveList.add(new Point(p.getX(), p.getY()+2));
+			allMoveList.add(new Point(this.x, this.y+2));
 		}
 		
 		for (Point point : allMoveList) {
@@ -122,7 +120,7 @@ public class Pawn extends Chesspiece {
 	}
 
 	private void vertical(int x, int y) {
-		for (int i = p.getY(); i <= y; i++) {
+		for (int i = this.y; i <= y; i++) {
 			validMovesList.add(new Point(x, i));
 		}
 	}

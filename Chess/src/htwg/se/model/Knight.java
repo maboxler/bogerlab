@@ -7,14 +7,12 @@ import htwg.se.util.Point;
 
 public class Knight extends Chesspiece {
 	
-	private Point p;
 	private List<Point> validMovesList;
 
 	public Knight(int x, int y, char color) {
 		super(x, y, color);
 		
 		validMovesList = new ArrayList<Point>();
-		p = getPosition();
 	}
 
 	@Override
@@ -33,17 +31,17 @@ public class Knight extends Chesspiece {
 		List<Point> allMoveList = new ArrayList<Point>();
 		Point move = new Point(x,y);
 		//up
-		allMoveList.add(new Point(p.getX()+1, p.getY()+2));
-		allMoveList.add(new Point(p.getX()-1, p.getY()+2));
+		allMoveList.add(new Point(this.x+1, this.y+2));
+		allMoveList.add(new Point(this.x-1, this.y+2));
 		//down
-		allMoveList.add(new Point(p.getX()+1, p.getY()-2));
-		allMoveList.add(new Point(p.getX()-1, p.getY()-2));
+		allMoveList.add(new Point(this.x+1, this.y-2));
+		allMoveList.add(new Point(this.x-1, this.y-2));
 		//righ
-		allMoveList.add(new Point(p.getX()+2, p.getY()+1));
-		allMoveList.add(new Point(p.getX()+2, p.getY()-1));
+		allMoveList.add(new Point(this.x+2, this.y+1));
+		allMoveList.add(new Point(this.x+2, this.y-1));
 		//left
-		allMoveList.add(new Point(p.getX()-2, p.getY()+1));
-		allMoveList.add(new Point(p.getX()-2, p.getY()-1));
+		allMoveList.add(new Point(this.x-2, this.y+1));
+		allMoveList.add(new Point(this.x-2, this.y-1));
 		
 		for (Point point : allMoveList) {
 			if(move.equals(point)) {
@@ -66,7 +64,7 @@ public class Knight extends Chesspiece {
 	}
 	
 //	private void whichDirection(int x, int y) {
-//		if (x != p.getX() && y > p.getY()) {
+//		if (x != this.x && y > this.y) {
 //			up(x, y);
 //		} else 
 //			down(x, y);
@@ -74,7 +72,7 @@ public class Knight extends Chesspiece {
 //	}
 //	
 //	private void up(int x, int y) {
-//		if(x < p.getX())
+//		if(x < this.x)
 //			upLeft(x,y);
 //		else
 //			upRight(x,y);
@@ -83,9 +81,9 @@ public class Knight extends Chesspiece {
 //	
 //	private void upLeft(int x, int y) {
 //		
-//			if(p.getX() == x && p.getY() == y)
+//			if(this.x == x && this.y == y)
 //			validMovesList.add(new Point(x, y));
-//			else if(p.getX() == x && p.getY() == y)
+//			else if(this.x == x && this.y == y)
 //			validMovesList.add(new Point(x-2, y+1));
 //			validMovesList.add(new Point(x-1, y+2));
 //	}
@@ -97,7 +95,7 @@ public class Knight extends Chesspiece {
 //	}
 //
 //	private void down(int x, int y) {
-//		if(x < p.getX())
+//		if(x < this.x)
 //			downLeft(x,y);
 //		else
 //			downRight(x,y);
@@ -118,7 +116,7 @@ public class Knight extends Chesspiece {
 //	}
 
 	private boolean equalPosition(int x, int y) {
-		if (p.getX() == x && p.getY() == y)
+		if (this.x == x && this.y == y)
 			return true;
 
 		return false;

@@ -1,6 +1,6 @@
 # required metadata
-sonar.projectKey=htwg.se.uchess
-sonar.projectName=Chess
+sonar.projectKey=SE2014WS-03-Chess-V2
+sonar.projectName=SE2014WS-03-Chess-V2
 sonar.projectVersion=1.0
  
 # path to source directories (required)

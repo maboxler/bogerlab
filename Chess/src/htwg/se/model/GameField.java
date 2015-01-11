@@ -139,6 +139,7 @@ public class GameField {
 	 * checks if 
 	 */
 	private boolean PawnRoutine(Piece p, Point to) {
+//		if(field[to.getX()][to.getY])
 		return false;
 	}
 	

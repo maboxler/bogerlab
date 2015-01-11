@@ -25,11 +25,9 @@ import htwg.se.util.Event;
 import htwg.se.util.IObserver;
 import htwg.se.util.Point;
 
+public class GUI implements UI, IObserver, ActionListener {
 
-
-public class GUI implements UI, IObserver, ActionListener  {
-
-	static final Logger log = Logger.getLogger( GUI.class.getName() );
+	static final Logger log = Logger.getLogger(GUI.class.getName());
 	ChessController controller;
 	ChessButton buttons[][];
 	JFrame meinFrame;
@@ -39,66 +37,107 @@ public class GUI implements UI, IObserver, ActionListener  {
 	Image img;
 	boolean firstpressed;
 	boolean colorSwap = false;
-	
+	Point first;
+	JLabel whichTurn;
+	JLabel from;
+	JLabel target;
 	public GUI(ChessController cc) {
-			
-			controller = cc;
+
+		controller = cc;
+		controller.addObserver(this);
+
+		panel = new JPanel();
+		panelGameField = new JPanel();
+		panelScore = new JPanel(new BorderLayout());
+		panel = new JPanel(new BorderLayout());
+		panelGameField.setLayout(new GridLayout(8, 8));
+		whichTurn = new JLabel();
+		from = new JLabel();
+		target = new JLabel();
+		panelScore.add(whichTurn, BorderLayout.NORTH);
+		panelScore.add(from, BorderLayout.WEST);
+		panelScore.add(target, BorderLayout.EAST);
+		panel.add(panelGameField, BorderLayout.CENTER);
+		panel.add(panelScore, BorderLayout.NORTH);
+		buttons = new ChessButton[8][8];
+		meinFrame = new JFrame("Ultimate Chess");
+		meinFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		meinFrame.setSize(1000, 1100);
+		meinFrame.add(panel);
 		
-			panel = new JPanel();
-			panelGameField = new JPanel();
-			panelScore = new JPanel();
-			panel = new JPanel(new BorderLayout());
-			panelGameField.setLayout(new GridLayout(8, 8));
-			panelScore.add(new JTextField("Schwarz     test DIsco"));
-			panel.add(panelGameField, BorderLayout.CENTER);
-			panel.add(panelScore, BorderLayout.EAST);
-			
-			buttons = new ChessButton[8][8];
-			meinFrame = new JFrame("Ultimate Chess");   
-			meinFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        meinFrame.setSize(1000, 800);
-	        initField();
-	        drawField();
-	        meinFrame.add(panel);
-	        meinFrame.setVisible(true);
-	        meinFrame.repaint();
-		
+		initField();
+		drawField();
+		meinFrame.setVisible(true);
+		meinFrame.repaint();
+
 	}
 
 	private void initField() {
-		for(int y=7;y>=0;y--) {
-			for(int x=0;x < 8; x++) {
+		for (int y = 7; y >= 0; y--) {
+			for (int x = 0; x < 8; x++) {
 				buttons[x][y] = new ChessButton();
 				buttons[x][y].setFieldX(x);
 				buttons[x][y].setFieldY(y);
-				buttons[x][y].addActionListener(this); 
-				setButtonImage(y, x);
-				//buttons[x][y].setText("x: "+x+" y:"+y);
+				buttons[x][y].addActionListener(this);
 				panelGameField.add(buttons[x][y]);
 			}
 		}
-		log.info( "Initialize Field succes" );
 	}
 
-	private void setButtonImage(int y, int x) {
+	private void drawField() {
+		Field field[][] = controller.getField();
+		String figure = "";
+		
+		for (int y = 7; y >= 0; y--) {
+			for (int x = 0; x < 8; x++) {
+				
+				setButtonColorField(y, x);
+				if (field[x][y].getChessPiece() != null) {
+					figure += field[x][y].getChessPiece().getcolor();
+					figure += field[x][y].getChessPiece().toChar();
+					figure += buttons[x][y].getFieldColor();
+					figure += ".jpg";
+					//System.out.println(figure);
+					setButtonImage(y,x,figure);
+					figure = "";
+				} 
+						
+			}
+		}
+		
+		
+		message(controller.getStatusMessage());
+	}
+
+	private void setButtonColorField(int y, int x) {
 		try {
-			img = ImageIO.read(getClass().getResource(whichColorField(x)));
+			img = ImageIO.read(getClass().getResource(whichColorField(x, y)));
 			buttons[x][y].setIcon(new ImageIcon(img));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	
-	private String whichColorField(int x) {
-		if(x==0)
+	private void setButtonImage(int y, int x, String chessPiece) {
+		try {
+			img = ImageIO.read(getClass().getResource(chessPiece));
+			buttons[x][y].setIcon(new ImageIcon(img));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private String whichColorField(int x, int y) {
+		if (x == 0)
 			swapColor();
-		
-		if(colorSwap) {
+
+		if (colorSwap) {
+			buttons[x][y].setFieldColor("w");
 			swapColor();
 			return "whiteField.jpg";
 		}
 		swapColor();
+		buttons[x][y].setFieldColor("b");
 		return "blackField.jpg";
 	}
 
@@ -107,33 +146,40 @@ public class GUI implements UI, IObserver, ActionListener  {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-			Object o = e.getSource();
-			ChessButton cbutton = (ChessButton) o;
-	            System.out.println("x: "+cbutton.getFieldX()+" y: "+cbutton.getFieldY());
-	} 
-
-	private void drawField() {
-		
-		
+		Object o = e.getSource();
+		ChessButton cbutton = (ChessButton) o;	
+		pressed(cbutton.getFieldX(), cbutton.getFieldY());
 	}
+	
+	public void message(String text) {
+		whichTurn.setText(text);
+	}
+
 
 	@Override
 	public void update(Event e) {
-		// TODO Auto-generated method stub
-		
+		drawField();
 	}
 
 	@Override
 	public void restart() {
-		// TODO Auto-generated method stub
-		
+		controller.reset();
+		drawField();
+
 	}
 
 	@Override
 	public void pressed(int x, int y) {
-		// TODO Auto-generated method stub
-		
-	}
+		if(firstpressed) {
+			from.setText("FROM x:"+x+" y: "+y);
+			controller.move(first, new Point(x,y));
+			firstpressed = false;
+			return;
+		}
+		first = new Point(x,y);
+		target.setText("TARGET x:"+x+" y: "+y);
+		firstpressed = true;
 
+	}
 
 }

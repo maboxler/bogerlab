@@ -7,6 +7,7 @@ public class ChessButton extends JButton {
 	private static final long serialVersionUID = 1L;
 	int cx;
 	int cy;
+	String fieldColor;
 	String chessPiece;
 		
 	public String getChessPiece() {
@@ -29,6 +30,14 @@ public class ChessButton extends JButton {
 	
 	public void setFieldY(int y) {
 		this.cy = y;
+	}
+	public void setFieldColor(String color) {
+		fieldColor = color;
+		
+	}
+	public String getFieldColor() {
+		return fieldColor;
+		
 	}
 	
 	

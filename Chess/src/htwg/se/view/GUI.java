@@ -3,7 +3,6 @@ package htwg.se.view;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -11,10 +10,13 @@ import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-
+import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+
 
 
 import htwg.se.controller.ChessController;
@@ -40,6 +42,12 @@ public class GUI implements UI, IObserver, ActionListener {
 	JLabel whichTurn;
 	JLabel from;
 	JLabel target;
+	JDialog meinJDialog = new JDialog();
+	JPanel panelGameOver = new JPanel();
+	JButton buttonExit = new JButton("Beenden");
+	JButton buttonReset = new JButton("neustart");
+	
+	
 	public GUI(ChessController cc) {
 
 		controller = cc;
@@ -61,7 +69,7 @@ public class GUI implements UI, IObserver, ActionListener {
 		buttons = new ChessButton[8][8];
 		meinFrame = new JFrame("Ultimate Chess");
 		meinFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		meinFrame.setSize(1000, 1100);
+		meinFrame.setSize(900, 900);
 		meinFrame.add(panel);
 		
 		initField();
@@ -145,18 +153,38 @@ public class GUI implements UI, IObserver, ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		
+		  if(e.getSource() == this.buttonReset){
+			  restart();
+	        }
+	        else if(e.getSource() == this.buttonExit){
+	           System.exit(0);
+	        }
+		
 		Object o = e.getSource();
 		ChessButton cbutton = (ChessButton) o;	
 		pressed(cbutton.getFieldX(), cbutton.getFieldY());
 	}
 	
 	public void winner() {
-		meinFrame.setTitle("GAME OVER");
-		whichTurn.setText("SPIEL ZU ENDE");
 		from.setText("");
 		target.setText("");
 		
 		meinFrame.setEnabled(false);
+		
+		
+		buttonExit.addActionListener(this);
+		buttonReset.addActionListener(this);
+		
+        meinJDialog.setTitle("Game Over");
+        meinJDialog.add(panelGameOver);
+        panelGameOver.add(buttonReset);
+        panelGameOver.add(buttonExit);
+        meinJDialog.setSize(200,200);
+        meinJDialog.setModal(true);
+        meinJDialog.pack();
+        meinJDialog.setVisible(true);
+		
 		
 	}
 
@@ -175,6 +203,8 @@ public class GUI implements UI, IObserver, ActionListener {
 	@Override
 	public void restart() {
 		controller.reset();
+		meinFrame.setEnabled(true);
+		meinJDialog.setVisible(false);
 		drawField();
 
 	}

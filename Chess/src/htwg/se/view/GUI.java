@@ -151,6 +151,16 @@ public class GUI implements UI, IObserver, ActionListener {
 		pressed(cbutton.getFieldX(), cbutton.getFieldY());
 	}
 	
+	public void winner() {
+		meinFrame.setTitle("GAME OVER");
+		whichTurn.setText("SPIEL ZU ENDE");
+		from.setText("");
+		target.setText("");
+		
+		meinFrame.setEnabled(false);
+		
+	}
+
 	public void message(String text) {
 		whichTurn.setText(text);
 	}
@@ -170,7 +180,7 @@ public class GUI implements UI, IObserver, ActionListener {
 
 	@Override
 	public void pressed(int x, int y) {
-		if(firstpressed) {
+		if(firstpressed && new Point(x,y) != first) {
 			from.setText("FROM x:"+x+" y: "+y);
 			controller.move(first, new Point(x,y));
 			firstpressed = false;

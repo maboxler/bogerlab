@@ -19,11 +19,13 @@ public class Init {
 		scanner = new Scanner(System.in);
 		
 		GUI gui = new GUI(cc);
-//		TUI tui = new TUI(cc);
-//		tui.update(null);
-//		while(!gameField.blackWon() && !gameField.whiteWon()) {
-//			tui.processInputLine(scanner.nextLine());
-//		}
+		TUI tui = new TUI(cc);
+		tui.update(null);
+		while(!gameField.blackWon() && !gameField.whiteWon()) {
+			tui.processInputLine(scanner.nextLine());
+		}
+		
+		gui.winner();
 	}
 
 }

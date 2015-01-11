@@ -73,5 +73,21 @@ public class ChessControllerTest {
 		assertEquals(cs.getField()[1][7].getChessPiece().toChar(), 'H');
 		assertNull(cs.getField()[0][5].getChessPiece());
 	}
+	
+	@Test
+	public void winTest() {
+		assertFalse(cs.checkWin());
+		cs.getField()[4][0].getChessPiece().kill();
+		assertTrue(cs.checkWin());
+		cs.getField()[4][7].getChessPiece().kill();
+		assertTrue(cs.checkWin());
+	}
+	
+	@Test
+	public void winTest2() {
+		assertFalse(cs.checkWin());
+		cs.getField()[4][7].getChessPiece().kill();
+		assertTrue(cs.checkWin());
+	}
 
 }

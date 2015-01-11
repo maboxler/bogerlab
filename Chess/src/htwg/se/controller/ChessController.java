@@ -60,4 +60,8 @@ public class ChessController extends Observable{
 		}
 		return piece.getcolor() == 'w';
 	}
+	
+	public boolean checkWin() {
+		return gamefield.blackWon() || gamefield.whiteWon();
+	}
 }

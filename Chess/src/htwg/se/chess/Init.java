@@ -18,6 +18,7 @@ public class Init {
 		ChessController cc = new ChessController(gameField);
 		scanner = new Scanner(System.in);
 		
+		@SuppressWarnings("unused")
 		GUI gui = new GUI(cc);
 		TUI tui = new TUI(cc);
 		tui.update(null);
@@ -25,7 +26,6 @@ public class Init {
 			tui.processInputLine(scanner.nextLine());
 		}
 		
-		gui.winner();
 	}
 
 }

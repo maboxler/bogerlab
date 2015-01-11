@@ -36,7 +36,7 @@ public class TUI implements UI, IObserver {
 				testAusgabe += "|";
 			}
 			
-			System.out.println(testAusgabe);
+			message(testAusgabe);
 			testAusgabe = "";
 		}
 		message(controller.getStatusMessage());
@@ -79,6 +79,8 @@ public class TUI implements UI, IObserver {
 	@Override
 	public void update(Event e) {
 		printUI();
+		if(controller.checkWin())
+			message("GAME OVER");
 	}
 
 }

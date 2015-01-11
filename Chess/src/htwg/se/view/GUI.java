@@ -3,7 +3,7 @@ package htwg.se.view;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.Panel;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -11,12 +11,11 @@ import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JDialog;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+
 
 import htwg.se.controller.ChessController;
 import htwg.se.model.Field;
@@ -169,6 +168,8 @@ public class GUI implements UI, IObserver, ActionListener {
 	@Override
 	public void update(Event e) {
 		drawField();
+		if(controller.checkWin())
+			winner();
 	}
 
 	@Override

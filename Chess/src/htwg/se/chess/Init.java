@@ -22,6 +22,7 @@ public class Init {
 		GUI gui = new GUI(cc);
 		TUI tui = new TUI(cc);
 		tui.update(null);
+		
 		while(!gameField.blackWon() && !gameField.whiteWon()) {
 			tui.processInputLine(scanner.nextLine());
 		}

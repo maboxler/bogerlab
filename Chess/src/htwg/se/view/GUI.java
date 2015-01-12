@@ -19,12 +19,13 @@ import javax.swing.JPanel;
 
 
 
+
 import htwg.se.controller.ChessController;
 import htwg.se.model.Field;
-import htwg.se.util.ChessButton;
-import htwg.se.util.Event;
-import htwg.se.util.IObserver;
-import htwg.se.util.Point;
+import htwg.util.ChessButton;
+import htwg.util.Event;
+import htwg.util.IObserver;
+import htwg.util.Point;
 
 public class GUI implements UI, IObserver, ActionListener {
 
@@ -204,7 +205,7 @@ public class GUI implements UI, IObserver, ActionListener {
 	public void restart() {
 		controller.reset();
 		meinFrame.setEnabled(true);
-		meinJDialog.setVisible(false);
+		//meinJDialog.setVisible(false);
 		drawField();
 
 	}

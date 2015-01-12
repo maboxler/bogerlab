@@ -3,7 +3,7 @@ package htwg.se.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import htwg.se.util.Point;
+import htwg.util.Point;
 
 public class Knight extends Chesspiece {
 	

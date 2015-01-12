@@ -3,10 +3,10 @@ package htwg.se.view;
 
 
 import htwg.se.model.Field;
-import htwg.se.util.Point;
-import htwg.se.util.Event;
-import htwg.se.util.IObserver;
 import htwg.se.controller.*;
+import htwg.util.Event;
+import htwg.util.IObserver;
+import htwg.util.Point;
 
 public class TUI implements UI, IObserver {
 	

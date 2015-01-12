@@ -1,4 +1,4 @@
-package htwg.se.util;
+package htwg.util;
 
 import javax.swing.JButton;
 

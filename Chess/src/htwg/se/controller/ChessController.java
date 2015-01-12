@@ -1,7 +1,7 @@
 package htwg.se.controller;
 
-import htwg.se.util.*;
 import htwg.se.model.*;
+import htwg.util.*;
 
 
 

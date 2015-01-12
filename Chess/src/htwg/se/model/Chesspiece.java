@@ -1,6 +1,6 @@
 package htwg.se.model;
 
-import htwg.se.util.*;
+import htwg.util.*;
 
 public abstract  class Chesspiece implements Piece{
 	

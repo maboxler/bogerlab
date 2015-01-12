@@ -1,6 +1,6 @@
 package htwg.se.model;
 
-import htwg.se.util.Point;
+import htwg.util.Point;
 
 public class Field {
 	private Point position;

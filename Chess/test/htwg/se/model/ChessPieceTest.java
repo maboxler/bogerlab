@@ -1,7 +1,8 @@
 package htwg.se.model;
 
 import static org.junit.Assert.*;
-import htwg.se.util.Point;
+import htwg.util.Point;
+
 import org.junit.Before;
 import org.junit.Test;
 

@@ -130,19 +130,120 @@ public class GameField {
 	
 	private boolean checkPawn(Piece figure, Point to) {
 		if(figure.toChar() == 'P') {
-			return PawnRoutine(figure,to);
+			return pawnColorRoutine(figure,to);
 		}
 		return checkValid(figure,to);
 	}
 	
-	/*
-	 * checks if 
-	 */
-	private boolean PawnRoutine(Piece p, Point to) {
-//		if(field[to.getX()][to.getY])
+	private boolean pawnColorRoutine(Piece p, Point to) {
+		if(p.getcolor() == 'w')
+			return whitepawnRoutine(p, to);
+		return blackpawnRoutine(p,to);
+	}
+	
+	private boolean blackpawnRoutine(Piece p, Point to) {
+		if((to.getX() + 1 == p.getPosition().getX()) &&
+				(to.getY() == p.getPosition().getY() - 1)) {
+			return pawnDiagonal(p, to);
+		}
+		if((to.getX() - 1 == p.getPosition().getX()) &&
+				(to.getY() == p.getPosition().getY() - 1)) {
+			return pawnDiagonal(p, to);
+		}
+		if(to.getX() == p.getPosition().getX())
+			return blackPawnMoveFront(p,to);
+		
+		return false;
+		
+	}
+	
+	private boolean blackPawnMoveFront(Piece p, Point to) {
+		if((to.getY() >= p.getPosition().getY() - 2) && (to.getY() < p.getPosition().getY())) {
+			return blackPawnOneOrTwo(p,to);
+		}
 		return false;
 	}
 	
+	private boolean blackPawnOneOrTwo(Piece p,Point to) {
+		if(p.getPosition().getY() - 2 == to.getY())
+			return blackPawnTwo(p,to);
+		return blackPawnOne(p,to);
+	}
+	
+	private boolean blackPawnOne(Piece p, Point to) {
+		return field[to.getX()][to.getY()].getChessPiece() == null;
+	}
+
+	private boolean blackPawnTwo(Piece p,Point to) {
+		if(p.getMoved() == true)
+			return false;
+		else 
+			return blackPawnPathTwo(p, to);
+	}
+	
+	private boolean blackPawnPathTwo(Piece p, Point to) {
+		Field stepOne = field[to.getX()][to.getY() + 1];
+		Field stepTwo = field[to.getX()][to.getY()];
+		return (stepTwo.getChessPiece() == null) && (stepOne.getChessPiece() == null);
+	}
+	
+	private boolean whitepawnRoutine(Piece p, Point to) {
+		if((to.getX() + 1 == p.getPosition().getX() )&&
+				(to.getY() ==  p.getPosition().getY() + 1)) {
+			return pawnDiagonal(p,to);
+		}
+		if((to.getX() -1 == p.getPosition().getX() )&&
+				(to.getY() ==  p.getPosition().getY() + 1)) {
+			return pawnDiagonal(p,to);
+		}
+		if(to.getX() == p.getPosition().getX())
+			return pawnMoveFront(p,to);
+		
+		return false;
+	}
+	
+	private boolean pawnDiagonal(Piece p, Point to) {
+		if(field[to.getX()][to.getY()].getChessPiece() != null) {
+			return pawnColorCheck(p.getcolor(),field[to.getX()][to.getY()].getChessPiece().getcolor());
+		}
+		return false;
+	}
+	
+	private boolean pawnMoveFront(Piece p, Point to) {
+		if((to.getY() <= p.getPosition().getY() + 2) && (to.getY() > p.getPosition().getY()) ){
+			return pawnOneOrTwoSteps(p,to);
+		}
+		return false;
+	}
+	
+	private boolean pawnOneOrTwoSteps(Piece p, Point to) {
+		if(p.getPosition().getY() == to.getY() + 1) {
+			return pawnOneStep(p,to);
+		} else {
+			return pawnTwoStep(p,to);
+		}
+	}
+	
+	private boolean pawnOneStep(Piece p, Point to) {
+		return field[to.getX()][to.getY()].getChessPiece() == null;
+	}
+	
+	private boolean pawnTwoStep(Piece p, Point to) {
+		if(p.getMoved() == true)
+			return false;
+		return pawnClearPath(p,to);
+			
+	}
+	
+	private boolean pawnClearPath(Piece p, Point to) {
+		Field stepOne = field[p.getPosition().getX()][p.getPosition().getY() + 1];
+		Field stepTwo = field[p.getPosition().getX()][p.getPosition().getY() + 2];
+		return (stepOne.getChessPiece() == null) && (stepTwo.getChessPiece() == null);
+	}
+	
+	private boolean pawnColorCheck(char piece, char target) {
+		return piece != target;
+	}
 	private boolean checkValid(Piece figure, Point to) {
 		Point[] path = figure.validMove(to.getX(), to.getY());
 		if(path == null)
@@ -157,7 +258,6 @@ public class GameField {
 				return false;
 			}
 		}
-		
 		return checkGoal(path[0], figure);
 		
 	}

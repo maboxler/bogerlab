@@ -4,14 +4,18 @@ import htwg.se.util.*;
 
 public abstract  class Chesspiece implements Piece{
 	
-	protected int x;// X-Cordinates of the piece
-	protected int y;// Y-Cordinates of the Piece
+	protected int x;// X-Coordinates of the piece
+	protected int y;// Y-Coordinates of the Piece
 	protected char color; //Black or White
 	protected boolean moved;
 	protected boolean alive;
 	
 	public Point getPosition() {
 		return new Point(x,y);
+	}
+	
+	public boolean getMoved() {
+		return moved;
 	}
 	
 	public char getcolor() {

@@ -29,4 +29,9 @@ public interface Piece {
 	 * returns a char for the representing Piece
 	 */
 	public char toChar();
+	
+	/*
+	 * returns the moved Attribute of the Piece
+	 */
+	public boolean getMoved();
 }

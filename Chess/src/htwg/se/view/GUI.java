@@ -20,9 +20,9 @@ import javax.swing.JPanel;
 
 
 
+
 import htwg.se.controller.ChessController;
 import htwg.se.model.Field;
-import htwg.util.ChessButton;
 import htwg.util.Event;
 import htwg.util.IObserver;
 import htwg.util.Point;

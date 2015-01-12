@@ -1,15 +1,18 @@
 package htwg.se.controller;
 
+import com.google.inject.Inject;
+
 import htwg.se.model.*;
 import htwg.util.*;
 
 
 
 
-public class ChessController extends Observable{
+public class ChessController extends Observable implements Icontroller{
 	private GameField gamefield;
 	private boolean blackturn;
 	
+	@Inject
 	public ChessController( GameField gamefield) {
 		this.gamefield = gamefield;
 		blackturn = true;

@@ -2,6 +2,8 @@ package htwg.se.view;
 
 
 
+import java.util.logging.Logger;
+
 import htwg.se.model.Field;
 import htwg.se.controller.*;
 import htwg.util.Event;
@@ -9,13 +11,14 @@ import htwg.util.IObserver;
 import htwg.util.Point;
 
 public class TUI implements UI, IObserver {
+	static final Logger log = Logger.getLogger(TUI.class.getName());
 	
-	ChessController controller;
+	Icontroller controller;
 	boolean firstpressed;
 	Point first;
 	
 	
-	public TUI(ChessController controller) {
+	public TUI(Icontroller controller) {
 		this.controller = controller;
 		firstpressed = false;
 		first = null;
@@ -26,6 +29,7 @@ public class TUI implements UI, IObserver {
 	private void printUI() {
 		Field field[][] = controller.getField();
 		String testAusgabe = "";
+		String feld = "";
 		for(int y = 7; y >= 0; --y) {
 			testAusgabe += "|";
 			for(int x = 0; x <= 7; ++x) {
@@ -38,9 +42,11 @@ public class TUI implements UI, IObserver {
 				testAusgabe += "|";
 			}
 			
-			message(testAusgabe);
+			
+			feld += testAusgabe + "\n";
 			testAusgabe = "";
 		}
+		message(feld);
 		message(controller.getStatusMessage());
 		
 	}
@@ -74,7 +80,7 @@ public class TUI implements UI, IObserver {
 	}
 
 	public void message(String text) {
-		System.out.println(text);
+		log.info("\n" + text);
 		
 	}
 

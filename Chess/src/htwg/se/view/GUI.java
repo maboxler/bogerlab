@@ -21,7 +21,8 @@ import javax.swing.JPanel;
 
 
 
-import htwg.se.controller.ChessController;
+
+import htwg.se.controller.Icontroller;
 import htwg.se.model.Field;
 import htwg.util.Event;
 import htwg.util.IObserver;
@@ -30,7 +31,7 @@ import htwg.util.Point;
 public class GUI implements UI, IObserver, ActionListener {
 
 	static final Logger log = Logger.getLogger(GUI.class.getName());
-	ChessController controller;
+	Icontroller controller;
 	ChessButton buttons[][];
 	JFrame meinFrame;
 	JPanel panel;
@@ -49,7 +50,7 @@ public class GUI implements UI, IObserver, ActionListener {
 	JButton buttonReset = new JButton("neustart");
 	
 	
-	public GUI(ChessController cc) {
+	public GUI(Icontroller cc) {
 
 		controller = cc;
 		controller.addObserver(this);

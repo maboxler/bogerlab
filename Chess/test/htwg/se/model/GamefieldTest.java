@@ -123,10 +123,50 @@ public class GamefieldTest {
 	}
 	
 	@Test
-	public void pawntest() {
+	public void pawntest1() {
 		Field[][] field = gamefield.getField();
-		assertEquals(gamefield.getField()[1][6].getChessPiece().toChar(),'P');
+		assertEquals(field[1][6].getChessPiece().toChar(),'P');
+		assertFalse(gamefield.moveCheck(new Point(1,6), new Point(0,4)));
+		assertFalse(gamefield.moveCheck(new Point(1,6), new Point(2,4)));
 		assertFalse(gamefield.moveCheck(new Point(1,6), new Point(0,5)));
+		assertFalse(gamefield.moveCheck(new Point(1,6), new Point(2,5)));
+		assertTrue(gamefield.moveCheck(new Point(1,6), new Point(1,5)));
+		assertTrue(gamefield.moveCheck(new Point(1,6), new Point(1,4)));
+		assertFalse(gamefield.moveCheck(new Point(1,6), new Point(4,6)));
+		assertEquals(field[1][1].getChessPiece().toChar(),'P');
+		assertFalse(gamefield.moveCheck(new Point(1,1), new Point(0,2)));
+		assertFalse(gamefield.moveCheck(new Point(1,1), new Point(2,2)));
+		assertTrue(gamefield.moveCheck(new Point(1,1), new Point(1,2)));
+		assertTrue(gamefield.moveCheck(new Point(1,1), new Point(1,3)));
+		assertFalse(gamefield.moveCheck(new Point(1,1), new Point(4,6)));
+		field[0][5].setChessPiece(new Pawn(0, 5, 'b'));
+		assertFalse(gamefield.moveCheck(new Point(1,6), new Point(0,5)));
+		field[0][5].setChessPiece(new Pawn(0, 5, 'w'));
+		assertTrue(gamefield.moveCheck(new Point(1,6), new Point(0,5)));
+		field[1][5].setChessPiece(new Pawn(1, 5, 'w'));
+		assertFalse(gamefield.moveCheck(new Point(1,6), new Point(1,5)));
+		assertFalse(gamefield.moveCheck(new Point(1,6), new Point(1,4)));
+		field[1][4].setChessPiece(new Pawn(1, 4, 'w'));
+		assertFalse(gamefield.moveCheck(new Point(1,6), new Point(1,4)));
+		field[1][5].setChessPiece(null);
+		assertFalse(gamefield.moveCheck(new Point(1,6), new Point(1,4)));
+		assertFalse(gamefield.moveCheck(new Point(1,6), new Point(1,7)));
+		assertFalse(gamefield.moveCheck(new Point(1,6), new Point(1,0)));
+	}
+	
+	@Test
+	public void pawntest2() {
+		Field[][] field = gamefield.getField();
+		assertEquals(field[1][6].getChessPiece().toChar(),'P');
+		assertFalse(gamefield.moveCheck(new Point(1,1), new Point(0,3)));
+		assertFalse(gamefield.moveCheck(new Point(1,1), new Point(2,3)));
+		field[1][6].getChessPiece().setmovedTrue();
+		assertFalse(gamefield.moveCheck(new Point(1,6), new Point(1,4)));
+		field[0][2].setChessPiece(new Pawn(0,2,'w'));
+		assertFalse(gamefield.moveCheck(new Point(1,1), new Point(0,2)));
+		field[0][2].setChessPiece(new Pawn(0,2,'b'));
+		assertTrue(gamefield.moveCheck(new Point(1,1), new Point(0,2)));
+		
 	}
 
 }

@@ -121,5 +121,12 @@ public class GamefieldTest {
 		assertFalse(gamefield.moveCheck(new Point(3, 3),new Point(3,4)));
 		
 	}
+	
+	@Test
+	public void pawntest() {
+		Field[][] field = gamefield.getField();
+		assertEquals(gamefield.getField()[1][6].getChessPiece().toChar(),'P');
+		//assertTrue(gamefield.moveCheck(new Point(1,6), new Point(0,5)));
+	}
 
 }

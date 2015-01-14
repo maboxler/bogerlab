@@ -17,11 +17,11 @@ public class BishopTest {
 	@Test
 	public void outRangeTest() {	
 		
-//		assertNull(bishop.validMove(-1, 1));
-//		assertNull(bishop.validMove(8, 1));
-//		assertNull(bishop.validMove(1, -1));
-//		assertNull(bishop.validMove(1, 8));
-//		assertNotNull(bishop.validMove(1, 4));
+		assertNull(bishop.validMove(-1, 1));
+		assertNull(bishop.validMove(8, 1));
+		assertNull(bishop.validMove(1, -1));
+		assertNull(bishop.validMove(1, 8));
+		assertNotNull(bishop.validMove(1, 4));
 	
 	}
 		

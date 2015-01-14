@@ -217,7 +217,7 @@ public class GameField {
 	}
 	
 	private boolean pawnOneOrTwoSteps(Piece p, Point to) {
-		if(p.getPosition().getY() == to.getY() + 1) {
+		if(p.getPosition().getY() + 1 == to.getY()) {
 			return pawnOneStep(p,to);
 		} else {
 			return pawnTwoStep(p,to);
@@ -253,12 +253,14 @@ public class GameField {
 	}
 	
 	private boolean checkPath(Piece figure, Point[] path) {
+		int index = -1;
 		for(int i = 0; i < path.length -2; ++i) {
+			index = i;
 			if(field[path[i].getX()][path[i].getY()].getChessPiece() != null) {
 				return false;
 			}
 		}
-		return checkGoal(path[0], figure);
+		return checkGoal(path[index + 1], figure);
 		
 	}
 	

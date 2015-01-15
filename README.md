@@ -8,7 +8,7 @@ Marco Boxler und Tarek Büchner
 * Dr. Prof. Marko Boger
 ###- 3. Users of the Product###
 * In eigener Sache
-###- 4. Mandated Constraints###
+### - 4. Mandated Constraints###
 * Das Spiel sollte nach dem *Model View Controller* Architekturmuster entwickelt werden, eine 100% Test abdeckung besitzen, eine Komplexität die Maximal zwischen 2 und 3 liegen soll, das *Dependency Injection* Konzept beinhalten und das Observer Entwurfsmuster implementiert haben damit mehrere *Views* zur parallel können.
 ###- 5. Naming Conventions and Definitions###
 ###- 6. Relevant Facts and Assumptions###

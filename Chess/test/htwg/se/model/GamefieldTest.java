@@ -123,6 +123,18 @@ public class GamefieldTest {
 	}
 	
 	@Test
+	public void pathtest() {
+		Field[][] field = gamefield.getField();
+		field[0][4].setChessPiece(new Tower(0, 4, 'w'));
+		field[7][4].setChessPiece(new Tower(7, 4, 'b'));
+		assertTrue(gamefield.moveCheck(new Point(0, 4),new Point(7,4)));
+		field[4][4].setChessPiece(new Tower(4, 4, 'w'));
+		assertFalse(gamefield.moveCheck(new Point(0, 4),new Point(7,4)));
+		field[7][4].setChessPiece(new Tower(7, 4, 'w'));
+		assertFalse(gamefield.moveCheck(new Point(4, 4),new Point(7,4)));
+	}
+	
+	@Test
 	public void pawntest1() {
 		Field[][] field = gamefield.getField();
 		assertEquals(field[1][6].getChessPiece().toChar(),'P');
@@ -167,6 +179,26 @@ public class GamefieldTest {
 		field[0][2].setChessPiece(new Pawn(0,2,'b'));
 		assertTrue(gamefield.moveCheck(new Point(1,1), new Point(0,2)));
 		
+	}
+	
+	@Test
+	public void whitePawnTest() {
+		Field[][] field = gamefield.getField();
+		assertEquals(field[1][1].getChessPiece().toChar(),'P');
+		assertEquals(field[1][1].getChessPiece().getcolor(),'w');
+		assertTrue(gamefield.moveCheck(new Point(1,1), new Point(1,3)));
+		assertFalse(gamefield.moveCheck(new Point(1,1), new Point(1,0)));
+		assertFalse(gamefield.moveCheck(new Point(1,1), new Point(1,7)));
+		assertTrue(gamefield.moveCheck(new Point(1,1), new Point(1,2)));
+		field[1][2].setChessPiece(new Pawn(1, 2, 'b'));
+		assertFalse(gamefield.moveCheck(new Point(1,1), new Point(1,2)));
+		assertFalse(gamefield.moveCheck(new Point(1,1), new Point(1,3)));
+		field[1][3].setChessPiece(new Pawn(1, 3, 'b'));
+		assertFalse(gamefield.moveCheck(new Point(1,1), new Point(1,3)));
+		field[1][2].setChessPiece(null);
+		assertFalse(gamefield.moveCheck(new Point(1,1), new Point(1,3)));
+		field[1][1].getChessPiece().setmovedTrue();
+		assertFalse(gamefield.moveCheck(new Point(1,1), new Point(1,3)));
 	}
 
 }

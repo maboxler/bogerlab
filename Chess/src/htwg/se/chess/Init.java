@@ -27,7 +27,7 @@ public class Init {
 		
 		
 		// Build up the application, resolving dependencies automatically by Guice
-				Icontroller cc = injector.getInstance(Icontroller.class);
+		Icontroller cc = injector.getInstance(Icontroller.class);
 		
 		@SuppressWarnings("unused")
 		GUI gui = new GUI(cc);

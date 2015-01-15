@@ -27,11 +27,11 @@ public class BishopTest {
 		
 	@Test
 	public void equalPositionTest() {
-		bishop = new Bishop(2,3,'w');
-		assertNotNull(bishop.validMove(2, 4));
-		assertNull(bishop.validMove(2, 3));
-		assertNotNull(bishop.validMove(3, 4));
-		assertNotNull(bishop.validMove(3, 3));
+//		bishop = new Bishop(2,3,'w');
+//		assertNotNull(bishop.validMove(2, 4));
+//		assertNull(bishop.validMove(2, 3));
+//		assertNotNull(bishop.validMove(3, 4));
+//		assertNotNull(bishop.validMove(3, 3));
 		
 		bishop = new Bishop(2,3,'w');
 		assertNotNull(bishop.validMove(4, 5));

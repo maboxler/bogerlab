@@ -58,7 +58,7 @@ Marco Boxler und Tarek Büchner
 - Bei misserfolg eine nicht bestandene Leistung.
 
 ##- 24. Costs##
-- Ausgerechnete Kosten liegen bei einem Stundensatz von 40 Euro bei ca. 6000 Euro.
+- Ausgerechnete Kosten liegen bei einem Stundensatz von 40 Euro bei ca. 1600 Euro.
 
 ##- 25. User Documentation and Training##
 

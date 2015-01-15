@@ -3,13 +3,13 @@ Marco Boxler und Tarek Büchner
 
 
 ###- 1. Purpose of the Project###
-* Dieses Projekt ist notwendig um den Leistungsnachweis der Vorlesung Software Engineering zu erhalten. Als Aufgabe sollten wir ein Spiel entwickeln welches bestimmte Anforderungen erfüllt.*
+  * Dieses Projekt ist notwendig um den Leistungsnachweis der Vorlesung Software Engineering zu erhalten. Als Aufgabe sollten wir ein Spiel entwickeln welches bestimmte Anforderungen erfüllt.
 ###- 2. The Client, the Customer and Other Stakeholders###
-* Dr. Prof. Marko Boger*
+  * Dr. Prof. Marko Boger
 ###- 3. Users of the Product###
-* In eigener Sache*
+  * In eigener Sache
 ###- 4. Mandated Constraints###
-* Das Spiel sollte nach dem *Model View Controller* Architekturmuster entwickelt werden, eine 100% Test abdeckung besitzen, eine Komplexität die Maximal zwischen 2 und 3 liegen soll, das *Dependency Injection* Konzept beinhalten und das Observer Entwurfsmuster implementiert haben damit mehrere *Views* zur parallel können.
+  * Das Spiel sollte nach dem *Model View Controller* Architekturmuster entwickelt werden, eine 100% Test abdeckung besitzen, eine Komplexität die Maximal zwischen 2 und 3 liegen soll, das *Dependency Injection* Konzept beinhalten und das Observer Entwurfsmuster implementiert haben damit mehrere *Views* zur parallel können.
 ###- 5. Naming Conventions and Definitions###
 ###- 6. Relevant Facts and Assumptions###
 - Projekt besitzt eine GUI und eine TUI.

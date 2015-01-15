@@ -19,7 +19,7 @@ public class Tower extends Chesspiece {
 	@Override
 	public Point[] validMove(int x, int y) {
 
-		if (equalPosition(x, y) || outRange(x,y)) {
+		if (equalPosition(x, y) || outRange(x,y) || possibleMove(x,y)) {
 			return null;
 		}
 		
@@ -27,6 +27,22 @@ public class Tower extends Chesspiece {
 
 		return listToArray();
 
+	}
+
+	private boolean possibleMove(int x, int y) {		
+		List<Point> allMoveList = new ArrayList<Point>();
+		Point move = new Point(x,y);
+		
+		allMoveList.add(new Point(this.x, y));
+		allMoveList.add(new Point(x, this.y));
+			
+		for (Point point : allMoveList) {
+			if(move.equals(point))
+				return false;
+		}
+
+		return true;
+		
 	}
 
 	private boolean outRange(int x, int y) {
@@ -40,13 +56,12 @@ public class Tower extends Chesspiece {
 		return false;
 	}
 
-	private void whichDirection(int x, int y) {
-		if (x != this.x && y == this.y) {
+	private void whichDirection(int x, int y) {		
+		if (x != this.x) {
 			horizontal(x, y);
 		}
-		if (x == this.x && y != this.y)
-			vertical(x, y);
-		
+		if (y != this.y)
+			vertical(x, y);	
 	}
 
 	private boolean equalPosition(int x, int y) {

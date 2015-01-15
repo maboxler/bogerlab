@@ -17,7 +17,6 @@ public class TowerTest {
 	
 	@Test
 	public void outRangeTest() {	
-		
 		assertNull(testtower.validMove(-1, 1));
 		assertNull(testtower.validMove(8, 1));
 		assertNull(testtower.validMove(1, -1));
@@ -29,29 +28,53 @@ public class TowerTest {
 	@Test
 	public void equalPositionTest() {
 		assertNull(testtower.validMove(1, 1));
-	}
-    	
+	}    	
 	
 	@Test
 	public void verticalTest() {		
     	assertNotNull(testtower.validMove(1,0)); //1
     	
     	testtower = new Tower(4,4,'w');
-    	assertNotNull(testtower.validMove(2,5));
+    	assertNull(testtower.validMove(2,5));
     	assertNotNull(testtower.validMove(2,4));
+    	assertNull(testtower.validMove(4,4));   	
     	assertNotNull(testtower.validMove(4,5));
-    	assertNull(testtower.validMove(4,4));
-    	assertNull(testtower.validMove(4,4));
+    	assertNotNull(testtower.validMove(4,3));
+    	assertNull(testtower.validMove(5,5));
+    	assertNull(testtower.validMove(3,5));
+    	
+    	assertNotNull(testtower.validMove(3,4));
+    	assertNull(testtower.validMove(3,5));
+//    	assertNotNull(testtower.validMove(4,4));
+//    	
+//    	assertNotNull(testtower.validMove(5,4));
+    	
+    	assertNotNull(testtower.validMove(3,4));
+    	assertNotNull(testtower.validMove(3,4));
+	}
+	
+	
+	
+	
+//	private void horizontal(int x, int y) {
+//		if (this.x < x) {
+//			rightHorizontal(x, y);
+//		} else
+//			leftHorizontal(x, y);
+//
+//	}
+	
+	@Test
+	public void horizontalTest() {
+		testtower = new Tower(4,4,'w');
+    	assertNotNull(testtower.validMove(5,4));
+    	assertNotNull(testtower.validMove(3,4));
     	
     	assertNotNull(testtower.validMove(4,5));
     	assertNotNull(testtower.validMove(4,3));
     	
-    	assertNotNull(testtower.validMove(5,5));
-    	assertNotNull(testtower.validMove(3,5));
-	}
-	
-	@Test
-	public void horizontalTest() {
+    	assertNull(testtower.validMove(5,5));
+    	assertNull(testtower.validMove(3,3));
 		
 	}
 	

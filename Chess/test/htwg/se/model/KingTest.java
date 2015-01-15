@@ -27,9 +27,6 @@ public class KingTest {
 		assertNull(king.validMove(1, 9));
 		assertNull(king.validMove(9, 1));
 
-	
-		
-		
 		assertNotNull(king.validMove(2, 4));
 		assertNotNull(king.validMove(2, 2));
 		assertNull(king.validMove(2, 5));

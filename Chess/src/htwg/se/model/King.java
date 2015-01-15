@@ -50,7 +50,7 @@ public class King extends Chesspiece {
 	private void whichDirection(int x, int y) {
 		if (x != this.x && y == this.y) {
 			horizontal(x, y);
-		} else if (x == this.x && y != this.y) {
+		} else if (x == this.x) {
 			vertical(x, y);
 		} else
 			diagonal(x, y);

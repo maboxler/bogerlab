@@ -43,7 +43,7 @@ public class Pawn extends Chesspiece {
 	}
 
 	private void whichDirection(int x, int y) {
-		if (x == this.x && y > this.y) {
+		if (x == this.x) {
 			vertical(x, y);
 		} else
 			diagonal(x, y);

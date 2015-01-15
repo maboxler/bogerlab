@@ -1,4 +1,0 @@
-bogerlab
-========
-
-Sowftwaretechnik Boger
